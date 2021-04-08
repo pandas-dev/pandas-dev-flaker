@@ -4,6 +4,12 @@
 # import numpy as np
 # from unittest import mock
 # import unittest
+from numpy import bool
+
+import numpy as np
+bool(3)
+
+np.bool
 
 # pytest.raises()
 # raises()
