@@ -5,11 +5,6 @@ import ast
 from pandas_style_guide import _plugins
 
 FUNCS = collections.defaultdict(list)
-RECORD_FROM_IMPORTS = frozenset((
-    'numpy',
-    'pytest',
-    'unittest'
-))
 class State(NamedTuple):
     from_imports: Dict[str, Set[str]]
     in_annotation: bool = False
@@ -20,6 +15,11 @@ def register(tp):
         return func
     return register_decorator
 
+def _get_alias(name):
+    if name.asname is not None:
+        return name.asname
+    else:
+        return name.name
 
 def visit(funcs, tree: ast.Module) -> Dict[int, List[int]]:
     "Step through tree, recording when nodes are in annotations."
@@ -35,13 +35,15 @@ def visit(funcs, tree: ast.Module) -> Dict[int, List[int]]:
             yield from ast_func(state, node, parent)
 
         if (
-                isinstance(node, ast.ImportFrom) and
-                not node.level and
-                node.module in RECORD_FROM_IMPORTS
+                isinstance(node, ast.ImportFrom)
+                and node.module is not None
         ):
-            state.from_imports[node.module].update(
-                name.name for name in node.names if not name.asname
+            state.from_imports[node.module.split('.')[0]].update(
+                _get_alias(name) for name in node.names if not name.asname
             )
+        elif isinstance(node, ast.Import):
+            for name in node.names: 
+                state.from_imports[_get_alias(name)]
 
         for name in reversed(node._fields):
             value = getattr(node, name)
