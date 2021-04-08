@@ -1,6 +1,8 @@
+import pkgutil
 import collections
 from typing import List, Tuple, Dict
 import ast
+from pandas_style_guide import _plugins
 
 FUNCS = collections.defaultdict(list)
 def register(tp):
@@ -35,3 +37,12 @@ def visit(funcs, tree: ast.Module) -> Dict[int, List[int]]:
                     if isinstance(value, ast.AST):
                         nodes.append((next_in_annotation, value))
 
+def _import_plugins() -> None:
+    # https://github.com/python/mypy/issues/1422
+    plugins_path: str = _plugins.__path__  # type: ignore
+    mod_infos = pkgutil.walk_packages(plugins_path, f'{_plugins.__name__}.')
+    for _, name, _ in mod_infos:
+        __import__(name, fromlist=['_trash'])
+
+
+_import_plugins()

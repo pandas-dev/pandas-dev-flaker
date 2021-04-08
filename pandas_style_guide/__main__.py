@@ -1,5 +1,4 @@
 from __future__ import annotations
-from pandas_style_guide.check_for_exec import check_for_exec
 
 
 import ast
