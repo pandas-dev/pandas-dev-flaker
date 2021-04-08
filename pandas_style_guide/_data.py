@@ -19,7 +19,6 @@ def visit(funcs, tree: ast.Module) -> Dict[int, List[int]]:
 
     while nodes:
         in_annotation, node = nodes.pop()
-
         tp = type(node)
         for ast_func in funcs[tp]:
             yield from ast_func(in_annotation, node)
