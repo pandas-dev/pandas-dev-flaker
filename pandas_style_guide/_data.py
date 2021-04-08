@@ -48,15 +48,15 @@ def visit(funcs, tree: ast.Module) -> Dict[int, List[int]]:
         for name in reversed(node._fields):
             value = getattr(node, name)
             if name in {"annotation", "returns"}:
-                next_in_annotation = True
+                next_state = state._replace(in_annotation=True)
             else:
-                next_in_annotation = state
+                next_state = state
             if isinstance(value, ast.AST):
-                nodes.append((next_in_annotation, value, node))
+                nodes.append((next_state, value, node))
             elif isinstance(value, list):
                 for value in reversed(value):
                     if isinstance(value, ast.AST):
-                        nodes.append((next_in_annotation, value, node))
+                        nodes.append((next_state, value, node))
 
 def _import_plugins() -> None:
     # https://github.com/python/mypy/issues/1422

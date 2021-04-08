@@ -1,8 +1,3 @@
-import pandas
-import conftest
-from pandas.foo.bar.dude import _foo
+from typing import Union
 
-_foo._foo('dod')
-os.remove('a')
-from os import remove
-remove('f')
+a: Union[DataFrame, Series]

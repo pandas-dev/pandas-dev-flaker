@@ -1,6 +1,6 @@
 from __future__ import annotations
 import tokenize
-
+import os
 
 import ast
 import importlib.metadata
@@ -14,8 +14,8 @@ from pandas_style_guide._data import FUNCS, visit
 
 
 class Plugin:
-    name = __name__
-    version = 1#importlib.metadata.version(__name__)
+    name = os.path.split(os.path.dirname(__file__))[-1]
+    version = importlib.metadata.version(name)
 
     def __init__(self, tree: ast.AST):
         self._tree = tree
