@@ -7,6 +7,7 @@ from pandas_style_guide import _plugins
 FUNCS = collections.defaultdict(list)
 RECORD_FROM_IMPORTS = frozenset((
     'pytest',
+    'unittest'
 ))
 class State(NamedTuple):
     from_imports: Dict[str, Set[str]]

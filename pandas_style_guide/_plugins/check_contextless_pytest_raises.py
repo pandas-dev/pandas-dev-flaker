@@ -7,5 +7,5 @@ MSG = 'PSG003 Do not use pytest.raises without context manager'
 def check_contextless_pytest_raises(state, node, parent):
     if is_name_attr(node.func, state.from_imports, 'pytest', ('raises', )) and not isinstance(parent, ast.withitem):
         yield node.lineno, node.col_offset, MSG
-    elif node.func.value.id == 'pytest' and node.func.attr == 'raises' and not isinstance(parent, ast.withitem):
+    elif isinstance(node.func, ast.Attribute) and node.func.attr == 'raises' and isinstance(node.func.value, ast.Name) and node.func.value.id == 'pytest' and not isinstance(parent, ast.withitem):
         yield node.lineno, node.col_offset, MSG

@@ -1,9 +1,18 @@
-import pytest as foobar
-from pytest import raises
-import pytest
+# import pytest as foobar
+# from pytest import raises
+# import pytest
+# import numpy as np
+from unittest import mock
+import unittest
 
-pytest.raises()
-raises()
+# pytest.raises()
+# raises()
+# filter([123])
+# with pytest.raises:
+#     pass
 
-with pytest.raises:
-    pass
+# exec('123')
+
+# np.testing
+mock
+unittest.mock
