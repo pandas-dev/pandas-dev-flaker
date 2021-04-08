@@ -8,7 +8,8 @@
 
 # import numpy as np
 # bool(3)
-
+with pytest.raises(ValueError, dude='a'):
+    pass
 
 
 pd.api.types.is_scalar
