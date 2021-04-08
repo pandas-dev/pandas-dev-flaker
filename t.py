@@ -9,13 +9,10 @@
 # import numpy as np
 # bool(3)
 
-from collections.abc import *
-from collections import abc
-import numpy as np
-from numpy import random
 
-np.random.randn
-random
+
+pd.api.types.is_scalar
+
 # np.bool
 
 # pytest.raises()
