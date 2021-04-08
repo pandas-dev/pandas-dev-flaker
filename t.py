@@ -1,7 +1,9 @@
-a = exec('3')
+import pytest as foobar
+from pytest import raises
+import pytest
 
+pytest.raises()
+raises()
 
-exec('43')
-
-with pytest.warns('a'):
-    foo
+with pytest.raises:
+    pass
