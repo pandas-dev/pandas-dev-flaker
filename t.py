@@ -17,5 +17,4 @@
 # mock
 # unittest.mock
 foo = 3
-f'{foo!r}'
-f'{foo:.2f}'
+foo.__class__
