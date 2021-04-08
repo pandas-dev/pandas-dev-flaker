@@ -1,9 +1,16 @@
 import ast
-from pandas_style_guide._data import register
-from pandas_style_guide._ast_helpers import is_name_attr
+from typing import Iterator, Tuple
 
-MSG = 'PSG007 Don\'t use !r, use repr'
+from pandas_style_guide._data import State, register
+
+MSG = "PSG007 Don't use !r, use repr"
+
+
 @register(ast.FormattedValue)
-def dont_use_formatted_repr(state, node, parent):
+def visit_FormattedValue(
+    state: State,
+    node: ast.FormattedValue,
+    parent: ast.AST,
+) -> Iterator[Tuple[int, int, str]]:
     if node.conversion == 114:
         yield node.lineno, node.col_offset, MSG

@@ -1,16 +1,11 @@
 from __future__ import annotations
-import tokenize
-import os
 
 import ast
 import importlib.metadata
-from typing import Any, List, Dict, Tuple, Type, Callable
-import collections
-from typing import Generator
+import os
+from typing import Any, Generator
 
 from pandas_style_guide._data import FUNCS, visit
-
-
 
 
 class Plugin:
@@ -26,4 +21,3 @@ class Plugin:
             return
         for line, col, msg in callbacks:
             yield line, col, msg, type(self)
-        

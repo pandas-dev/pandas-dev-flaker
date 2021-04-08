@@ -1,8 +1,20 @@
 import ast
-from pandas_style_guide._data import register
+from typing import Iterator, Tuple
 
-MSG = 'PSG002 do not use pytest.warns'
+from pandas_style_guide._data import State, register
+
+MSG = "PSG002 do not use pytest.warns"
+
+
 @register(ast.Attribute)
-def check_for_pytest_warns(state, node, parent):
-    if node.attr == 'warns' and isinstance(node.value, ast.Name) and node.value.id == 'pytest' :
+def check_for_pytest_warns(
+    state: State,
+    node: ast.Attribute,
+    parent: ast.AST,
+) -> Iterator[Tuple[int, int, str]]:
+    if (
+        node.attr == "warns"
+        and isinstance(node.value, ast.Name)
+        and node.value.id == "pytest"
+    ):
         yield node.lineno, node.col_offset, MSG

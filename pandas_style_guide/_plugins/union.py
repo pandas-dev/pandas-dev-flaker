@@ -1,15 +1,20 @@
-
 import ast
-from pandas_style_guide._data import register
-from pandas_style_guide._ast_helpers import is_name_attr
+from typing import Iterator, Tuple, Union
 
-MSG = 'PSG010 union'
+from pandas_style_guide._data import State, register
+
+MSG = "PSG010 union"
+
 
 @register(ast.Subscript)
-def visit_Subscript(state, node, parent):
-    if isinstance(node.value, ast.Name) and node.value.id == 'Union':
+def visit_Subscript(
+    state: State,
+    node: ast.Subscript,
+    parent: ast.AST,
+) -> Iterator[Tuple[int, int, str]]:
+    if isinstance(node.value, ast.Name) and node.value.id == "Union":
         if isinstance(node.slice, ast.Index):
-            tuple = node.slice.value
+            tuple: Union[ast.slice, ast.expr] = node.slice.value
         else:
             tuple = node.slice
         names = set()
@@ -17,5 +22,5 @@ def visit_Subscript(state, node, parent):
             for elt in tuple.elts:
                 if isinstance(elt, ast.Name):
                     names.add(elt.id)
-        if names == {'DataFrame', 'Series'}:
+        if names == {"DataFrame", "Series"}:
             yield node.lineno, node.col_offset, MSG

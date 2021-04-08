@@ -1,14 +1,26 @@
 import ast
-from pandas_style_guide._data import register
-from pandas_style_guide._ast_helpers import is_name_attr
+from typing import Iterator, Tuple
 
-MSG = 'PSG010 Don\'t import from conftest'
+from pandas_style_guide._data import State, register
+
+MSG = "PSG010 Don't import from conftest"
+
+
 @register(ast.ImportFrom)
-def abc(state, node, parent):
-    if node.module == 'conftest':
+def visit_ImportFrom(
+    state: State,
+    node: ast.ImportFrom,
+    parent: ast.AST,
+) -> Iterator[Tuple[int, int, str]]:
+    if node.module == "conftest":
         yield node.lineno, node.col_offset, MSG
 
+
 @register(ast.Import)
-def abc(state, node, parent):
-    if 'conftest' in {name.name for name in node.names}:
+def visit_Import(
+    state: State,
+    node: ast.Import,
+    parent: ast.AST,
+) -> Iterator[Tuple[int, int, str]]:
+    if "conftest" in {name.name for name in node.names}:
         yield node.lineno, node.col_offset, MSG
