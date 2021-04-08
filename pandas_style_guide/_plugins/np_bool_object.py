@@ -12,4 +12,3 @@ def np_bool_object(state, node, parent):
 def np_bool_object(state, node, parent):
     if node.attr in {'bool', 'object'} and isinstance(node.value, ast.Name) and node.value.id in {'numpy', 'np'}:
         yield node.lineno, node.col_offset, MSG
-

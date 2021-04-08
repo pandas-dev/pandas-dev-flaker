@@ -39,3 +39,4 @@ def has_starargs(call: ast.Call) -> bool:
         any(k.arg is None for k in call.keywords) or
         any(isinstance(a, ast.Starred) for a in call.args)
     )
+

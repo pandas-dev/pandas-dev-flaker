@@ -4,12 +4,19 @@
 # import numpy as np
 # from unittest import mock
 # import unittest
-from numpy import bool
+# from numpy import bool
 
+# import numpy as np
+# bool(3)
+
+from collections.abc import *
+from collections import abc
 import numpy as np
-bool(3)
+from numpy import random
 
-np.bool
+np.random.randn
+random
+# np.bool
 
 # pytest.raises()
 # raises()
