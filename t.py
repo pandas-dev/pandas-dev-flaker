@@ -2,8 +2,8 @@
 # from pytest import raises
 # import pytest
 # import numpy as np
-from unittest import mock
-import unittest
+# from unittest import mock
+# import unittest
 
 # pytest.raises()
 # raises()
@@ -14,5 +14,8 @@ import unittest
 # exec('123')
 
 # np.testing
-mock
-unittest.mock
+# mock
+# unittest.mock
+foo = 3
+f'{foo!r}'
+f'{foo:.2f}'
