@@ -1,4 +1,5 @@
 from __future__ import annotations
+import tokenize
 
 
 import ast
@@ -25,4 +26,4 @@ class Plugin:
             return
         for line, col, msg in callbacks:
             yield line, col, msg, type(self)
-                                                                  
+        
