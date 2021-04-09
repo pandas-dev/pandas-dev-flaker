@@ -28,7 +28,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | PDF008 | 'foo.\_\_class\_\_' used, (use 'type(foo)' instead)                     |
 | PDF009 | 'common' imported from 'pandas.core' without 'comm' alias               |
 | PDF010 | import from 'conftest' found                                            |
-| PDF011 | found both pd.foo and foo in the same file                              |
+| PDF011 | found both 'pd.foo' and 'foo' in the same file                              |
 
 ## contributing
 
