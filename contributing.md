@@ -1,8 +1,3 @@
-.. highlight:: shell
-
-.. _contributing:
-
-============
 Contributing
 ============
 
@@ -17,7 +12,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/nbQA-dev/nbQA/issues.
+Report bugs at https://github.com/MarcoGorelli/pandas-dev-flaker/issues.
 
 If you are reporting a bug, please include:
 
@@ -40,14 +35,14 @@ and "help wanted" is open to whoever wants to implement it.
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
 
-nbqa could always use more documentation, whether as part of the
-official nbqa docs, in docstrings, or even on the web in blog posts,
+pandas-dev-flaker could always use more documentation, whether as part of the
+official pandas-dev-flaker docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/nbQA-dev/nbQA/issues.
+The best way to send feedback is to file an issue at https://github.com/MarcoGorelli/pandas-dev-flaker/issues.
 
 If you are proposing a feature:
 
@@ -59,13 +54,13 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up ``nbqa`` for local development.
+Ready to contribute? Here's how to set up ```` for local development.
 
-1. Fork the ``nbqa`` repo on GitHub at https://github.com/nbQA-dev/nbQA.
+1. Fork the ``pandas-dev-flaker`` repo on GitHub at https://github.com/MarcoGorelli/pandas-dev-flaker.
 2. Clone your fork locally::
 
-    $ git clone git@github.com:your_name_here/nbqa.git nbqa-dev
-    $ cd nbqa-dev
+    $ git clone git@github.com:your_name_here/pandas-dev-flaker.git pandas-dev-flaker-dev
+    $ cd pandas-dev-flaker-dev
 
 3. Create a virtual environment for local development::
 
@@ -100,20 +95,6 @@ Before you submit a pull request, check that it meets these guidelines:
    your new functionality into a function with a docstring, and add the
    feature to the list in README.md.
 3. The pull request should work for Python 3.6, 3.7, 3.8, and 3.9.
-
-Add yourself as a contributor
------------------------------
-
-To add yourself to the table of contributors, please follow the `bot usage
-instructions <https://allcontributors.org/docs/en/bot/usage>`_.
-
-Example of comment::
-
-    @all-contributors please add @<username> for documentation
-
-.. note::
-
-    It's considered a good practice to always prefix usernames with ``@``
 
 Tips
 ----
