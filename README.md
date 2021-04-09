@@ -12,8 +12,8 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 
 ## flake8 codes
 
-| Code   | Description                 |
-|--------|-----------------------------|
+| Code   | Description                                                             |
+|--------|-------------------------------------------------------------------------|
 | PDF001 | import from collections.abc (use 'from collections import abc' instead) |
 | PDF002 | pd.api.types used (import from pandas.api.types instead)                |
 | PDF003 | pytest.raises used without 'match='                                     |
@@ -24,6 +24,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | PDF008 | 'foo.\_\_class\_\_' used, (use 'type(foo)' instead)                     |
 | PDF009 | 'common' imported from 'pandas.core' without 'comm' alias               |
 | PDF010 | import from 'conftest' found                                            |
+| PDF011 | found both pd.foo and foo in the same file                              |
 
 ## contributing
 

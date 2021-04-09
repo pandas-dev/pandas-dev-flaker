@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data import State, register
 
-MSG = "PDF012 namespace inconsistency"
+MSG = "PDF011 found both pd.foo and foo in the same file"
 
 
 @register(ast.Attribute)
