@@ -1,8 +1,8 @@
 import ast
 from typing import Iterator, Tuple
 
-from pandas_style_guide._ast_helpers import is_name_attr
-from pandas_style_guide._data import State, register
+from pandas_dev_flaker._ast_helpers import is_name_attr
+from pandas_dev_flaker._data import State, register
 
 MSG = "PSG009 don't use np.bool or np.object but np.bool_ and np.object_"
 

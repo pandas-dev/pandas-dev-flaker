@@ -1,10 +1,10 @@
 import ast
 from typing import Iterator, Tuple
 
-from pandas_style_guide._ast_helpers import is_name_attr
-from pandas_style_guide._data import State, register
+from pandas_dev_flaker._ast_helpers import is_name_attr
+from pandas_dev_flaker._data import State, register
 
-MSG = "PSG009 don't use np.bool or np.object but np.bool_ and np.object_"
+MSG = "PSG006 do not use unitest.mock, use pytest's monkeypatch"
 
 
 @register(ast.Name)
@@ -13,7 +13,7 @@ def visit_Name(
     node: ast.Name,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
-    if is_name_attr(node, state.from_imports, "numpy", ("bool", "object")):
+    if is_name_attr(node, state.from_imports, "unittest", ("mock",)):
         yield node.lineno, node.col_offset, MSG
 
 
@@ -24,8 +24,8 @@ def visit_Attribute(
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
     if (
-        node.attr in {"bool", "object"}
+        node.attr == "mock"
         and isinstance(node.value, ast.Name)
-        and node.value.id in {"numpy", "np"}
+        and node.value.id == "unittest"
     ):
         yield node.lineno, node.col_offset, MSG

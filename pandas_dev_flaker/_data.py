@@ -20,7 +20,7 @@ if TYPE_CHECKING:
 else:
     Protocol = object
 
-from pandas_style_guide import _plugins
+from pandas_dev_flaker import _plugins
 
 
 class State(NamedTuple):

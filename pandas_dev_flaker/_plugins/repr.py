@@ -1,7 +1,7 @@
 import ast
 from typing import Iterator, Tuple
 
-from pandas_style_guide._data import State, register
+from pandas_dev_flaker._data import State, register
 
 MSG = "PSG007 Don't use !r, use repr"
 

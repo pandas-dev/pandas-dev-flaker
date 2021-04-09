@@ -1,9 +1,9 @@
 import ast
 from typing import Iterator, Tuple
 
-from pandas_style_guide._data import State, register
+from pandas_dev_flaker._data import State, register
 
-MSG = "PSG010 namespace inconsistency"
+MSG = "PSG005 don't use np.testing or np.array_equal"
 
 
 @register(ast.Attribute)
@@ -13,8 +13,8 @@ def visit_Attribute(
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
     if (
-        node.attr in state.from_imports["pandas"]
+        node.attr in {"testing", "array_equal"}
         and isinstance(node.value, ast.Name)
-        and node.value.id in {"pandas", "pd"}
+        and node.value.id in {"np", "numpy"}
     ):
         yield node.lineno, node.col_offset, MSG

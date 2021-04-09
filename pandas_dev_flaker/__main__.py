@@ -5,7 +5,7 @@ import importlib.metadata
 import os
 from typing import Any, Generator
 
-from pandas_style_guide._data import FUNCS, visit
+from pandas_dev_flaker._data import FUNCS, visit
 
 
 class Plugin:
