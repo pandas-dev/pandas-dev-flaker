@@ -21,7 +21,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | PDF005 | 'pytest.raises' used outside of context manager                         |
 | PDF006 | builtin exec used                                                       |
 | PDF007 | 'pytest.warns' used (use 'tm.assert_produces_warning' instead)          |
-| PDF008 | 'foo.__class__' used, (use 'type(foo)' instead)                         |
+| PDF008 | 'foo.\_\_class\_\_' used, (use 'type(foo)' instead)                     |
 | PDF009 | 'common' imported from 'pandas.core' without 'comm' alias               |
 | PDF010 | import from 'conftest' found                                            |
 
