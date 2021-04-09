@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data import State, register
 
-MSG = "PDF003 bare pytest raises found"
+MSG = "PDF003 pytest.raises used without 'match='"
 
 
 @register(ast.Call)

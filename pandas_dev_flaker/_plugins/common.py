@@ -3,7 +3,7 @@ from typing import Iterator, Sequence, Tuple
 
 from pandas_dev_flaker._data import State, register
 
-MSG = "PDF009 don't import from pandas.core or from pandas.core.common"
+MSG = "PDF009 'common' imported from 'pandas.core' without 'comm' alias"
 
 
 def _check_for_wrong_alias(

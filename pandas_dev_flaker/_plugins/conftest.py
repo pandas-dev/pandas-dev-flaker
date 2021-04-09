@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data import State, register
 
-MSG = "PDF010 Don't import from conftest"
+MSG = "PDF010 import from 'conftest' found"
 
 
 @register(ast.ImportFrom)

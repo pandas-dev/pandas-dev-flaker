@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data import State, register
 
-MSG = "PDF006 do not use exec"
+MSG = "PDF006 builtin exec used"
 
 
 @register(ast.Call)
