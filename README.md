@@ -27,20 +27,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 
 ## contributing
 
-### development environment
-
-Make sure you have installed [tox](https://tox.readthedocs.io/en/latest/install.html). Then, do
-
-```bash
-tox --devenv venv
-. venv/bin/activate
-pip install pre-commit
-pre-commit install
-```
-
-and you will be in a virtual environment with all the dependencies you'll need installed.
-
-### new rules
+See `contributing.md` for how to get started.
 
 Each new linting rule should be its own file inside `pandas-dev-flaker/_plugins`. Please linting rule should have two sets of tests in `pandas-dev-flaker/tests` - one for when the linting rule is expected to pass, and another for when it's expected to fail.
 
