@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data import State, register
 
-MSG = "PSG010 don't import numpy.random"
+MSG = "PDF014 don't import numpy.random"
 
 
 @register(ast.ImportFrom)

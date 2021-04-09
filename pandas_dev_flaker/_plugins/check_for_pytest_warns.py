@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data import State, register
 
-MSG = "PSG002 do not use pytest.warns"
+MSG = "PDF007 do not use pytest.warns"
 
 
 @register(ast.Attribute)

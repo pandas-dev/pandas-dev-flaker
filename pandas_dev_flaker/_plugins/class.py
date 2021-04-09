@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data import State, register
 
-MSG = "PSG008 don't use .__class__, use type()"
+MSG = "PDF008 don't use .__class__, use type()"
 
 
 @register(ast.Attribute)

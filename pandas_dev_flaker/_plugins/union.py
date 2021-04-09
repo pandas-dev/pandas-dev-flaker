@@ -3,7 +3,7 @@ from typing import Iterator, Tuple, Union
 
 from pandas_dev_flaker._data import State, register
 
-MSG = "PSG010 union"
+MSG = "PDF021 union"
 
 
 @register(ast.Subscript)

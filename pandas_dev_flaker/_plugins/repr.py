@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data import State, register
 
-MSG = "PSG007 Don't use !r, use repr"
+MSG = "PDF020 Don't use !r, use repr"
 
 
 @register(ast.FormattedValue)

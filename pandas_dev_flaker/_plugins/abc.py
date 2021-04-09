@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data import State, register
 
-MSG = "PSG010 don't import from collections.abc"
+MSG = "PDF001 don't import from collections.abc"
 
 
 @register(ast.ImportFrom)
@@ -12,8 +12,5 @@ def visit_ImportFrom(
     node: ast.ImportFrom,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
-    if node.module == "collections.abc" or (
-        node.module == "collections"
-        and "abc" in {name.name for name in node.names}
-    ):
+    if node.module == "collections.abc":
         yield node.lineno, node.col_offset, MSG

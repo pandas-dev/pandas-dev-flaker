@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data import State, register
 
-MSG = "PSG010 import pandas._testing as tm"
+MSG = "PDF016 import pandas._testing as tm"
 
 
 @register(ast.ImportFrom)

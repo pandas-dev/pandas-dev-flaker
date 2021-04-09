@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data import State, register
 
-MSG = "PSG010 namespace inconsistency"
+MSG = "PDF012 namespace inconsistency"
 
 
 @register(ast.Attribute)
