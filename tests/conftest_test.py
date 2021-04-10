@@ -43,6 +43,11 @@ def test_noop(source):
             "1:0: PDF010 import from 'conftest' found",
             id="import from conftest",
         ),
+        pytest.param(
+            "from pandas.conftest import foo",
+            "1:0: PDF010 import from 'conftest' found",
+            id="import from pandas.conftest",
+        ),
     ),
 )
 def test_violation(source, expected):
