@@ -22,7 +22,7 @@ def results(s):
     (
         pytest.param(
             "conftest = 'foo'",
-            id="set conftest",
+            id="assign to conftest",
         ),
     ),
 )
@@ -35,6 +35,11 @@ def test_noop(source):
     (
         pytest.param(
             "import conftest",
+            "1:0: PDF010 import from 'conftest' found",
+            id="import conftest",
+        ),
+        pytest.param(
+            "from conftest import foo",
             "1:0: PDF010 import from 'conftest' found",
             id="import from conftest",
         ),
