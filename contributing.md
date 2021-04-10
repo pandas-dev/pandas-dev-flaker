@@ -62,29 +62,33 @@ Ready to contribute? Here's how to set up ```` for local development.
     $ git clone git@github.com:your_name_here/pandas-dev-flaker.git pandas-dev-flaker-dev
     $ cd pandas-dev-flaker-dev
 
-3. Create a Python [virtual environment](https://realpython.com/python-virtual-environments-a-primer/),
+3. Set the original repository as upstream::
+
+    $ git remote add upstream git@github.com:MarcoGorelli/pandas-dev-flaker.git
+
+4. Create a Python [virtual environment](https://realpython.com/python-virtual-environments-a-primer/),
    and inside it, run:
 
     $ pip install tox pre-commit
     $ pre-commit install
 
-4. Create a branch for local development::
+5. Create a branch for local development::
 
     $ git checkout -b name-of-your-bugfix-or-feature
 
    Now you can make your changes locally.
 
-5. When you're done making changes, check that your changes pass tests:
+6. When you're done making changes, check that your changes pass tests:
 
     $ tox -e py
 
-6. Commit your changes and push your branch to GitHub::
+7. Commit your changes and push your branch to GitHub::
 
     $ git add .
     $ git commit -m "Your detailed description of your changes."
     $ git push origin name-of-your-bugfix-or-feature
 
-7. Submit a pull request through the GitHub website.
+8. Submit a pull request through the GitHub website.
 
 Pull Request Guidelines
 -----------------------
