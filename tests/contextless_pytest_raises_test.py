@@ -1,5 +1,6 @@
 import ast
 import tokenize
+from io import StringIO
 
 import pytest
 
@@ -9,7 +10,10 @@ from pandas_dev_flaker.__main__ import run
 def results(s):
     return {
         "{}:{}: {}".format(*r)
-        for r in run(ast.parse(s), tokenize.generate_tokens(s))
+        for r in run(
+            ast.parse(s),
+            list(tokenize.generate_tokens(StringIO(s).readline)),
+        )
     }
 
 
