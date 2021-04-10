@@ -1,12 +1,16 @@
 import ast
+import tokenize
 
 import pytest
 
-from pandas_dev_flaker.__main__ import Plugin
+from pandas_dev_flaker.__main__ import run
 
 
 def results(s):
-    return {"{}:{}: {}".format(*r) for r in Plugin(ast.parse(s)).run()}
+    return {
+        "{}:{}: {}".format(*r)
+        for r in run(ast.parse(s), tokenize.generate_tokens(s))
+    }
 
 
 @pytest.mark.parametrize(

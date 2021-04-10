@@ -2,9 +2,9 @@ import ast
 from typing import Iterator, Tuple
 
 from pandas_dev_flaker._ast_helpers import is_name_attr
-from pandas_dev_flaker._data import State, register
+from pandas_dev_flaker._data_tree import State, register
 
-MSG = "PDF019 don't use pytest.xfail"
+MSG = "PDF005 'pytest.raises' used outside of context manager"
 
 
 @register(ast.Call)
@@ -18,15 +18,16 @@ def visit_Call(
             node.func,
             state.from_imports,
             "pytest",
-            ("xfail",),
+            ("raises",),
         )
         and not isinstance(parent, ast.withitem)
     ):
         yield node.lineno, node.col_offset, MSG
     elif (
         isinstance(node.func, ast.Attribute)
-        and node.func.attr == "xfail"
+        and node.func.attr == "raises"
         and isinstance(node.func.value, ast.Name)
         and node.func.value.id == "pytest"
+        and not isinstance(parent, ast.withitem)
     ):
         yield node.lineno, node.col_offset, MSG

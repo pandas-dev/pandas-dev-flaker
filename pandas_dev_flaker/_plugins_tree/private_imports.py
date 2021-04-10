@@ -1,7 +1,7 @@
 import ast
 from typing import Iterator, Tuple
 
-from pandas_dev_flaker._data import State, register
+from pandas_dev_flaker._data_tree import State, register
 
 PRIVATE_FUNCTIONS_ALLOWED = {"sys._getframe"}  # no known alternative
 
