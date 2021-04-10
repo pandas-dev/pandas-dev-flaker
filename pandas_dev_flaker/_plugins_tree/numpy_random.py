@@ -1,19 +1,19 @@
 import ast
 from typing import Iterator, Tuple
 
-from pandas_dev_flaker._data import State, register
+from pandas_dev_flaker._data_tree import State, register
 
-MSG = "PDF016 import pandas._testing as tm"
+MSG = "PDF014 don't import numpy.random"
 
 
 @register(ast.ImportFrom)
-def abc(
+def visit_ImportFrom(
     state: State,
     node: ast.ImportFrom,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
-    if node.module == "pandas._testing" or (
+    if node.module == "numpy.random" or (
         node.module == "numpy"
-        and "_testing" in {name.name for name in node.names}
+        and "random" in {name.name for name in node.names}
     ):
         yield node.lineno, node.col_offset, MSG

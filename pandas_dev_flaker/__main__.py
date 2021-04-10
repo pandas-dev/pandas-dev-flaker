@@ -1,26 +1,33 @@
 import ast
-import os
-import sys
-from typing import Any, Generator, Tuple, Type
+import tokenize
+from typing import Iterator, Sequence, Tuple
 
-from pandas_dev_flaker._data import FUNCS, visit
+import pkg_resources
 
-if sys.version_info < (3, 8):  # pragma: no cover (<PY38)
-    import importlib_metadata
-else:  # pragma: no cover (PY38+)
-    import importlib.metadata as importlib_metadata
+from pandas_dev_flaker._data_tokens import FUNCS_TOKENS, visit_tokens
+from pandas_dev_flaker._data_tree import FUNCS_TREE, visit_tree
+
+pkg_name = "pandas-dev-flaker"
+
+pkg_version: str = pkg_resources.get_distribution(pkg_name).version
 
 
-class Plugin:
-    name = os.path.split(os.path.dirname(__file__))[-1]
-    version = importlib_metadata.version(name)
+def run(
+    tree: ast.AST,
+    file_tokens: Sequence[tokenize.TokenInfo],
+) -> Iterator[Tuple[int, int, str, str]]:
+    callbacks_tree = visit_tree(FUNCS_TREE, tree)
+    if not callbacks_tree:
+        return
+    for line, col, msg in callbacks_tree:
+        yield line, col, msg, "pandas_dev_flaker"
 
-    def __init__(self, tree: ast.AST):
-        self._tree = tree
+    callbacks_tokens = visit_tokens(FUNCS_TOKENS, file_tokens)
+    if not callbacks_tokens:
+        return
+    for line, col, msg in callbacks_tokens:
+        yield line, col, msg, "pandas_dev_flaker"
 
-    def run(self) -> Generator[Tuple[int, int, str, Type[Any]], None, None]:
-        callbacks = visit(FUNCS, self._tree)
-        if not callbacks:
-            return
-        for line, col, msg in callbacks:
-            yield line, col, msg, type(self)
+
+run.name = pkg_name  # type: ignore
+run.version = pkg_version  # type: ignore

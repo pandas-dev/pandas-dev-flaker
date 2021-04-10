@@ -20,7 +20,7 @@ if TYPE_CHECKING:
 else:
     Protocol = object
 
-from pandas_dev_flaker import _plugins
+from pandas_dev_flaker import _plugins_tree
 
 
 class State(NamedTuple):
@@ -31,7 +31,8 @@ class State(NamedTuple):
 AST_T = TypeVar("AST_T", bound=ast.AST)
 ASTFunc = Callable[[State, AST_T, ast.AST], Iterable[Tuple[int, int, str]]]
 
-FUNCS = collections.defaultdict(list)
+
+FUNCS_TREE = collections.defaultdict(list)
 
 
 class ASTCallbackMapping(Protocol):
@@ -39,9 +40,11 @@ class ASTCallbackMapping(Protocol):
         ...
 
 
-def register(tp: Type[AST_T]) -> Callable[[ASTFunc[AST_T]], ASTFunc[AST_T]]:
+def register(
+    tp: Type[AST_T],
+) -> Callable[[ASTFunc[AST_T]], ASTFunc[AST_T]]:
     def register_decorator(func: ASTFunc[AST_T]) -> ASTFunc[AST_T]:
-        FUNCS[tp].append(func)
+        FUNCS_TREE[tp].append(func)
         return func
 
     return register_decorator
@@ -54,7 +57,7 @@ def _get_alias(name: ast.alias) -> str:
         return name.name
 
 
-def visit(
+def visit_tree(
     funcs: ASTCallbackMapping,
     tree: ast.Module,
 ) -> Iterator[Tuple[int, int, str]]:
@@ -94,8 +97,11 @@ def visit(
 
 def _import_plugins() -> None:
     # https://github.com/python/mypy/issues/1422
-    plugins_path: str = _plugins.__path__  # type: ignore
-    mod_infos = pkgutil.walk_packages(plugins_path, f"{_plugins.__name__}.")
+    plugins_path: str = _plugins_tree.__path__  # type: ignore
+    mod_infos = pkgutil.walk_packages(
+        plugins_path,
+        f"{_plugins_tree.__name__}.",
+    )
     for _, name, _ in mod_infos:
         __import__(name, fromlist=["_trash"])
 

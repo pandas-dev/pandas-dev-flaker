@@ -2,7 +2,7 @@ import ast
 from typing import Iterator, Tuple
 
 from pandas_dev_flaker._ast_helpers import is_name_attr
-from pandas_dev_flaker._data import State, register
+from pandas_dev_flaker._data_tree import State, register
 
 MSG = "PDF022 do not use unitest.mock, use pytest's monkeypatch"
 
