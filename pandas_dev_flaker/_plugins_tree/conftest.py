@@ -12,7 +12,7 @@ def visit_ImportFrom(
     node: ast.ImportFrom,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
-    if node.module == "conftest":
+    if isinstance(node.module, str) and "conftest" in node.module:
         yield node.lineno, node.col_offset, MSG
 
 
