@@ -62,10 +62,11 @@ Ready to contribute? Here's how to set up ```` for local development.
     $ git clone git@github.com:your_name_here/pandas-dev-flaker.git pandas-dev-flaker-dev
     $ cd pandas-dev-flaker-dev
 
-3. Create a virtual environment for local development::
+3. Create a Python [virtual environment](https://realpython.com/python-virtual-environments-a-primer/),
+   and inside it, run:
 
-    $ tox --devenv venv
-    $ . venv/bin/activate
+    $ pip install tox pre-commit
+    $ pre-commit install
 
 4. Create a branch for local development::
 
@@ -95,12 +96,3 @@ Before you submit a pull request, check that it meets these guidelines:
    your new functionality into a function with a docstring, and add the
    feature to the list in README.md.
 3. The pull request should work for Python 3.6, 3.7, 3.8, and 3.9.
-
-Tips
-----
-
-Enable pre-commit to catch errors early-on:
-
-.. code-block::
-
-    pre-commit install
