@@ -45,6 +45,15 @@ def test_noop(source):
             "5:7: PDF011 found both 'pd.foo' and 'foo' in the same file",
             id="One is accessed from pd, the other is imported from pandas",
         ),
+        pytest.param(
+            "import pandas\n"
+            "from pandas import Categorical\n"
+            "\n"
+            "cat1 = Categorical()\n"
+            "cat2 = pandas.Categorical()\n",
+            "5:7: PDF011 found both 'pd.foo' and 'foo' in the same file",
+            id="One accessed from pandas, the other imported from pandas",
+        ),
     ),
 )
 def test_violation(source, expected):
