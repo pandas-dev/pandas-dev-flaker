@@ -30,6 +30,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | PDF010 | import from 'conftest' found                                            |
 | PDF011 | found both 'pd.foo' and 'foo' in the same file                          |
 | PDF012 | line split in two unnecessarily by 'black' formatter                    |
+| PDF013 | leading space in concatenated strings                                   |
 
 ## contributing
 
