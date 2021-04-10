@@ -38,7 +38,7 @@ Each new linting rule should be its own file inside `pandas-dev-flaker/_plugins`
 
 ## credit
 
-Several methods are simplified versions of methods from [pyupgrade](https://github/asottile/pyupgrade) - please find their license in the `LICENSES` folder.
+Several methods are simplified versions of methods from [pyupgrade](https://github/asottile/pyupgrade). Some of the checks were taken from the [pandas](https://github.com/pandas-dev/pandas) repo. Please find both their licenses in the `LICENSES` folder.
 
 ## as a pre-commit hook
 
