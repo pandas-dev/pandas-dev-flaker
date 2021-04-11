@@ -1,5 +1,5 @@
 import ast
-from typing import Container, Dict, Set
+from typing import Container, Dict, Sequence, Set
 
 
 def is_name_attr(
@@ -18,3 +18,15 @@ def is_name_attr(
         and node.value.id == mod
         and node.attr in names
     )
+
+
+def check_for_wrong_alias(
+    names: Sequence[ast.alias],
+    name: str,
+    alias: str,
+) -> bool:
+    for name_ in names:
+        if name_.name == name:
+            return name_.asname != alias
+    else:
+        return False

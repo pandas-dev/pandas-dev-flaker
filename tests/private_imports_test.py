@@ -46,11 +46,6 @@ def test_noop(source):
             "2:0: PDF016 found private import across modules",
             id="warns used, imported from pytest",
         ),
-        pytest.param(
-            "from foo import _bar\n",
-            "1:0: PDF016 found private import across modules",
-            id="warns used, imported from pytest",
-        ),
     ),
 )
 def test_violation(source, expected):

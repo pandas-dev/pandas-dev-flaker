@@ -41,16 +41,3 @@ def visit_Attribute(
         and _is_private_import(node.value.id, [node.attr])
     ):
         yield node.lineno, node.col_offset, MSG
-
-
-@register(ast.ImportFrom)
-def visit_ImportFrom(
-    state: State,
-    node: ast.ImportFrom,
-    parent: ast.AST,
-) -> Iterator[Tuple[int, int, str]]:
-    if node.module is not None and _is_private_import(
-        node.module,
-        [name.name for name in node.names],
-    ):
-        yield node.lineno, node.col_offset, MSG
