@@ -21,12 +21,8 @@ def results(s):
     "source",
     (
         pytest.param(
-            "with pytest.raises(ValueError, match='foo'):\n" "   pass",
-            id="pytest.raises used in context manager",
-        ),
-        pytest.param(
-            "from foo import raises\n" "raises(ValueError, match='foo')",
-            id="raises not imported",
+            "with pytest.raises(ValueError, match=None): pass",
+            id="non-builtin exec",
         ),
     ),
 )
@@ -38,14 +34,14 @@ def test_noop(source):
     "source, expected",
     (
         pytest.param(
-            "pytest.raises(ValueError, match='foo')",
-            "1:0: PDF005 'pytest.raises' used outside of context manager",
-            id="pytest.raises used without context manager",
+            "import pytest\n" "pytest.raises(ValueError, match=None)",
+            "2:0: PDF005 'pytest.raises' used outside of context manager",
+            id="builtin exec",
         ),
         pytest.param(
-            "from pytest import raises\n" "raises(ValueError, match='foo')",
+            "from pytest import raises\n" "raises(ValueError, match=None)",
             "2:0: PDF005 'pytest.raises' used outside of context manager",
-            id="raises imported from pytest",
+            id="builtin exec",
         ),
     ),
 )

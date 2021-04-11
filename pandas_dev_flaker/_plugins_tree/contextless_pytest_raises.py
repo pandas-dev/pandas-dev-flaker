@@ -23,11 +23,3 @@ def visit_Call(
         and not isinstance(parent, ast.withitem)
     ):
         yield node.lineno, node.col_offset, MSG
-    elif (
-        isinstance(node.func, ast.Attribute)
-        and node.func.attr == "raises"
-        and isinstance(node.func.value, ast.Name)
-        and node.func.value.id == "pytest"
-        and not isinstance(parent, ast.withitem)
-    ):
-        yield node.lineno, node.col_offset, MSG
