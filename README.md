@@ -33,6 +33,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | PDF013 | leading space in concatenated strings                                   |
 | PDF014 | Found '{foo!r}' formatted value (instead, use 'repr(foo)')              |
 | PDF015 | found pytest.xfail (use pytest.mark.xfail instead)                      |
+| PDF016 | found private import across modules                                     |
 
 ## contributing
 

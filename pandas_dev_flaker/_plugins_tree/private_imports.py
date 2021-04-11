@@ -1,36 +1,56 @@
 import ast
-from typing import Iterator, Tuple
+from typing import Iterator, Sequence, Tuple
 
 from pandas_dev_flaker._data_tree import State, register
 
 PRIVATE_FUNCTIONS_ALLOWED = {"sys._getframe"}  # no known alternative
 
-MSG = "PDF018 private import!"
+MSG = "PDF016 found private import across modules"
 
 
-@register(ast.Call)
-def visit_Call(
+def _is_private_import(module: str, attributes: Sequence[str]) -> bool:
+    return (
+        not module[0].isupper()
+        and not any(
+            attribute.startswith("__") and attribute.endswith("__")
+            for attribute in attributes
+        )
+        and any(
+            attribute.startswith("_")
+            and f"{module}.{attribute}" not in PRIVATE_FUNCTIONS_ALLOWED
+            for attribute in attributes
+        )
+    )
+
+
+@register(ast.Attribute)
+def visit_Attribute(
     state: State,
-    node: ast.Call,
+    node: ast.Attribute,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
     if (
-        isinstance(node.func, ast.Attribute)
-        and isinstance(node.func.value, ast.Name)
-        and not node.func.value.id[0].isupper()
-        and not (
-            node.func.value.id.startswith("__")
-            and node.func.value.id.endswith("__")
-        )
+        isinstance(node.value, ast.Name)
         and (
             any(
-                node.func.value.id in imports
+                node.value.id in imports
                 for imports in state.from_imports.values()
             )
-            or node.func.value.id in state.from_imports
+            or node.value.id in state.from_imports
         )
-        and node.func.attr.startswith("_")
-        and f"{node.func.value.id}.{node.func.attr}"
-        not in PRIVATE_FUNCTIONS_ALLOWED
+        and _is_private_import(node.value.id, [node.attr])
+    ):
+        yield node.lineno, node.col_offset, MSG
+
+
+@register(ast.ImportFrom)
+def visit_ImportFrom(
+    state: State,
+    node: ast.ImportFrom,
+    parent: ast.AST,
+) -> Iterator[Tuple[int, int, str]]:
+    if node.module is not None and _is_private_import(
+        node.module,
+        [name.name for name in node.names],
     ):
         yield node.lineno, node.col_offset, MSG
