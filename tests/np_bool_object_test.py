@@ -49,6 +49,12 @@ def test_noop(source):
             "(use 'np.bool_' or 'np.object_' instead)",
             id="os.remove call",
         ),
+        pytest.param(
+            "from numpy import object",
+            "1:0: PDF020 found 'np.bool' or 'np.object' "
+            "(use 'np.bool_' or 'np.object_' instead)",
+            id="os.remove call",
+        ),
     ),
 )
 def test_violation(source, expected):

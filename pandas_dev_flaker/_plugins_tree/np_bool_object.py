@@ -1,7 +1,6 @@
 import ast
 from typing import Iterator, Tuple
 
-from pandas_dev_flaker._ast_helpers import is_name_attr
 from pandas_dev_flaker._data_tree import State, register
 
 MSG = (
@@ -10,13 +9,20 @@ MSG = (
 )
 
 
-@register(ast.Name)
-def visit_Name(
+@register(ast.ImportFrom)
+def visit_ImportFrom(
     state: State,
-    node: ast.Name,
+    node: ast.ImportFrom,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
-    if is_name_attr(node, state.from_imports, "numpy", ("bool", "object")):
+    if (
+        (
+            "object" in {name.name for name in node.names}
+            or "bool" in {name.name for name in node.names}
+        )
+        and node.module is not None
+        and node.module == "numpy"
+    ):
         yield node.lineno, node.col_offset, MSG
 
 
