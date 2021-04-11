@@ -32,6 +32,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | PDF012 | line split in two unnecessarily by 'black' formatter                    |
 | PDF013 | leading space in concatenated strings                                   |
 | PDF014 | Found '{foo!r}' formatted value (instead, use 'repr(foo)')              |
+| PDF015 | found pytest.xfail (use pytest.mark.xfail instead)                      |
 
 ## contributing
 
