@@ -1,19 +1,20 @@
 import ast
 from typing import Iterator, Tuple
 
-from pandas_dev_flaker._ast_helpers import is_name_attr
 from pandas_dev_flaker._data_tree import State, register
 
 MSG = "PDF022 do not use unitest.mock, use pytest's monkeypatch"
 
 
-@register(ast.Name)
-def visit_Name(
+@register(ast.ImportFrom)
+def visit_ImportFrom(
     state: State,
-    node: ast.Name,
+    node: ast.ImportFrom,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
-    if is_name_attr(node, state.from_imports, "unittest", ("mock",)):
+    if node.module == "unittest" and "mock" in {
+        name.name for name in node.names
+    }:
         yield node.lineno, node.col_offset, MSG
 
 
