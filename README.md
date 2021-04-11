@@ -36,6 +36,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | PDF016 | found private import across modules                                     |
 | PDF017 | found import from 'pandas._testing' (use 'import pandas._testing as tm')|
 | PDF018 | don't import from pandas.testing                                        |
+| PDF019 | found 'os.remove' (use 'tm.ensure_clean' instead)                       |
 ## contributing
 
 See `contributing.md` for how to get started.

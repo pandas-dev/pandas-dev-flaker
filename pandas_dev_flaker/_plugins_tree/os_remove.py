@@ -4,7 +4,7 @@ from typing import Iterator, Tuple
 from pandas_dev_flaker._ast_helpers import is_name_attr
 from pandas_dev_flaker._data_tree import State, register
 
-MSG = "PDF015 os remove"
+MSG = "PDF019 found 'os.remove' (use 'tm.ensure_clean' instead)"
 
 
 @register(ast.Call)
