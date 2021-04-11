@@ -39,9 +39,23 @@ def test_noop(source):
             id="Whitespace at start",
         ),
         pytest.param(
-            "foo = (\n" "    '\n'\n" "    'bar'\n" "    ' qux'\n" "    )\n",
+            "foo = (\n" "    'bar'\n" "    f' {3}'\n" "    )\n",
             "3:4: PDF013 leading space in concatenated strings",
-            id="Empty line at start",
+            id="With f-string",
+        ),
+        pytest.param(
+            "foo = (\n" "    'bar'\n" "    rf' {3}'\n" "    )\n",
+            "3:4: PDF013 leading space in concatenated strings",
+            id="With french-string",
+        ),
+        pytest.param(
+            "foo = (\n"
+            "    'bar'\n"
+            "    rf'{3}'\n"
+            "    rf' {3}'\n"
+            "    )\n",
+            "4:4: PDF013 leading space in concatenated strings",
+            id="With french-string",
         ),
     ),
 )
