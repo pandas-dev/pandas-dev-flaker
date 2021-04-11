@@ -35,14 +35,11 @@ def _get_literal_string_prefix_len(token_string: str) -> int:
     >>> _get_literal_string_prefix_len(example_string)
     1
     """
-    try:
-        return min(
-            token_string.find(quote)
-            for quote in (r"'", r'"')
-            if token_string.find(quote) >= 0
-        )
-    except ValueError:
-        return 0
+    return min(
+        token_string.find(quote)
+        for quote in (r"'", r'"')
+        if token_string.find(quote) >= 0
+    )
 
 
 @register()
@@ -107,13 +104,7 @@ def visit(
         """
         if first_line.endswith(r"\n"):
             return False
-        elif first_line.startswith("  ") or second_line.startswith("  "):
-            return False
-        elif first_line.endswith("  ") or second_line.endswith("  "):
-            return False
-        elif (not first_line.endswith(" ")) and second_line.startswith(" "):
-            return True
-        return False
+        return (not first_line.endswith(" ")) and second_line.startswith(" ")
 
     for first_token, second_token, third_token in zip(
         tokens,
