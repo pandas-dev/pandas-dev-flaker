@@ -13,21 +13,10 @@ def visit_Call(
     node: ast.Call,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
-    if (
-        is_name_attr(
-            node.func,
-            state.from_imports,
-            "os",
-            ("remove",),
-        )
-        and not isinstance(parent, ast.withitem)
-    ):
-        yield node.lineno, node.col_offset, MSG
-    elif (
-        isinstance(node.func, ast.Attribute)
-        and node.func.attr == "remove"
-        and isinstance(node.func.value, ast.Name)
-        and node.func.value.id == "os"
-        and not isinstance(parent, ast.withitem)
+    if is_name_attr(
+        node.func,
+        state.from_imports,
+        "os",
+        ("remove",),
     ):
         yield node.lineno, node.col_offset, MSG
