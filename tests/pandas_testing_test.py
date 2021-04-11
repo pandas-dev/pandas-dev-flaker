@@ -34,22 +34,29 @@ def test_noop(source):
     "source, expected",
     (
         pytest.param(
-            "from pandas._testing import foo",
-            "1:0: PDF017 found import from 'pandas._testing' "
-            "(use 'import pandas._testing as tm')",
-            id="import from _testing",
+            "from pandas import testing",
+            "1:0: PDF018 don't import from pandas.testing",
+            id="straight import",
         ),
         pytest.param(
-            "from pandas import _testing as tm",
-            "1:0: PDF017 found import from 'pandas._testing' "
-            "(use 'import pandas._testing as tm')",
-            id="imported _testing from pandas",
+            "from pandas.testing import foo",
+            "1:0: PDF018 don't import from pandas.testing",
+            id="import from pandas.testing",
         ),
         pytest.param(
-            "import pandas._testing",
-            "1:0: PDF017 found import from 'pandas._testing' "
-            "(use 'import pandas._testing as tm')",
-            id="imported pandas._testing",
+            "import pandas\n" "pandas.testing.foo",
+            "2:0: PDF018 don't import from pandas.testing",
+            id="access from pandas.testing",
+        ),
+        pytest.param(
+            "import pandas as pd\n" "pd.testing.foo",
+            "2:0: PDF018 don't import from pandas.testing",
+            id="access from pd.testing",
+        ),
+        pytest.param(
+            "import pandas.testing",
+            "1:0: PDF018 don't import from pandas.testing",
+            id="import pandas.testing",
         ),
     ),
 )

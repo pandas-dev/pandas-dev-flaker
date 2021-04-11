@@ -12,9 +12,23 @@ def visit_ImportFrom(
     node: ast.ImportFrom,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
-    if node.module == "pandas" and "testing" in {
-        name.name for name in node.names
-    }:
+    if (
+        node.module == "pandas"
+        and "testing" in {name.name for name in node.names}
+    ) or (
+        node.module is not None
+        and node.module.split(".")[:2] == ["pandas", "testing"]
+    ):
+        yield node.lineno, node.col_offset, MSG
+
+
+@register(ast.Import)
+def visit_Import(
+    state: State,
+    node: ast.Import,
+    parent: ast.AST,
+) -> Iterator[Tuple[int, int, str]]:
+    if "pandas.testing" in {name.name for name in node.names}:
         yield node.lineno, node.col_offset, MSG
 
 
@@ -24,9 +38,9 @@ def visit_Attribute(
     node: ast.Attribute,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
-    if (
-        node.attr in {"testing"}
-        and isinstance(node.value, ast.Name)
-        and node.value.id in {"pandas", "pd"}
+    if isinstance(node.value, ast.Name) and (
+        (node.attr == "testing" and node.value.id in {"pandas", "pd"})
+        or node.value.id.split(".")[:2]
+        in [["pd", "testing"], ["pandas", "testing"]]
     ):
         yield node.lineno, node.col_offset, MSG

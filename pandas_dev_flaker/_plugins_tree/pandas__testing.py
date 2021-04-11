@@ -6,7 +6,7 @@ from pandas_dev_flaker._data_tree import State, register
 
 MSG = (
     "PDF017 found import from 'pandas._testing' "
-    "(use 'import pandas._testing as tm' instead)"
+    "(use 'import pandas._testing as tm')"
 )
 
 
