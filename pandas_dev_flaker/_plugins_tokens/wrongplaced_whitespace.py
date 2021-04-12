@@ -85,22 +85,6 @@ def visit(
 
         And if the string is ending with a new line character (\n) we
         do not want any trailing whitespaces after it.
-
-        For example, this is bad:
-
-        >>> rule = (
-        ...    "We want the space at the begging of "
-        ...    "the line if the previous line is ending with a \n "
-        ...    "not at the end, like always"
-        ... )
-
-        And what we do want is:
-
-        >>> rule = (
-        ...    "We want the space at the begging of "
-        ...    "the line if the previous line is ending with a \n"
-        ...    " not at the end, like always"
-        ... )
         """
         if first_line.endswith(r"\n"):
             return False
