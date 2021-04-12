@@ -18,7 +18,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 
 | Code   | Description                                                             |
 |--------|-------------------------------------------------------------------------|
-| PDF001 | import from collections.abc (use 'from collections import abc' instead) |
+| PDF001 | found import from collections.abc (use 'from collections import abc' instead) |
 | PDF002 | pd.api.types used (import from pandas.api.types instead)                |
 | PDF003 | pytest.raises used without 'match='                                     |
 | PDF004 | builtin filter function used                                            |
