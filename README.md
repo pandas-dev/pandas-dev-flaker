@@ -18,9 +18,9 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 
 | Code   | Description                                                             |
 |--------|-------------------------------------------------------------------------|
-| PDF001 | found import from collections.abc (use 'from collections import abc')   |
-| PDF002 | builtin filter function used                                            |
-| PDF003 | builtin exec used                                                       |
+| PDF001 | found import from 'collections.abc' (use 'from collections import abc') |
+| PDF002 | builtin 'filter' function used                                            |
+| PDF003 | builtin 'exec' function used                                                       |
 | PDF004 | 'foo.\_\_class\_\_' used, (use 'type(foo)' instead)                     |
 | PDF005 | leading space in concatenated strings                                   |
 | PDF006 | Found '{foo!r}' formatted value (instead, use 'repr(foo)')              |
@@ -28,11 +28,11 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | PDF008 | found 'os.remove' (use 'tm.ensure_clean' instead)                       |
 | PDF009 | 'pytest.raises' used without 'match='                                   |
 | PDF010 | 'pytest.raises' used outside of context manager                         |
-| PDF011 | found pytest.warns (use pandas._testing.assert_produces_warning)        |
-| PDF012 | found pytest.xfail (use pytest.mark.xfail instead)                      |
+| PDF011 | found 'pytest.warns' (use 'pandas._testing.assert_produces_warning')    |
+| PDF012 | found 'pytest.xfail' (use 'pytest.mark.xfail' instead)                  |
 | PDF013 | import from 'conftest' found                                            |
 | PDF014 | found import from 'pandas._testing' (use 'import pandas._testing as tm')|
-| PDF015 | don't import from pandas.testing                                        |
+| PDF015 | from import from 'pandas.testing' (use 'import pandas._testing as tm')  |
 | PDF016 | found 'unittest.mock' (use 'pytest.monkeypatch' instead)                |
 | PDF017 | 'pd.api.types' used (import from 'pandas.api.types' instead)            |
 | PDF018 | 'common' imported from 'pandas.core' without 'comm' alias               |

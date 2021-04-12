@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data_tree import State, register
 
-MSG = "PDF002 builtin filter function used"
+MSG = "PDF002 builtin 'filter' function used"
 
 
 @register(ast.Call)

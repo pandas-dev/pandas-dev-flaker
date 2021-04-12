@@ -43,7 +43,7 @@ def test_noop(source):
             "from pandas.testing import foo",
             "1:0: PDF015 found import from 'pandas.testing' "
             "(use 'import pandas._testing as tm')",
-            id="import from pandas.testing",
+            id="import from 'pandas.testing'",
         ),
         pytest.param(
             "import pandas\n" "pandas.testing.foo",
