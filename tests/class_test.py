@@ -22,7 +22,7 @@ def results(s):
     (
         pytest.param(
             "class Foo: ...",
-            id="non-builtin exec",
+            id="class definition",
         ),
     ),
 )
@@ -36,7 +36,7 @@ def test_noop(source):
         pytest.param(
             "foo.__class__()",
             "1:0: PDF008 'foo.__class__' used, (use 'type(foo)' instead)",
-            id="builtin exec",
+            id="__class__",
         ),
     ),
 )
