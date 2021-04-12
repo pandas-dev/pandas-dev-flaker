@@ -6,18 +6,20 @@ from pandas_dev_flaker._data_tree import State, register
 MSG = "PDF015 found pytest.xfail (use pytest.mark.xfail instead)"
 
 
-@register(ast.Attribute)
-def visit_Attribute(
+@register(ast.FunctionDef)
+def visit_FunctionDef(
     state: State,
-    node: ast.Attribute,
+    node: ast.FunctionDef,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
-    if (
-        node.attr == "xfail"
-        and isinstance(node.value, ast.Name)
-        and node.value.id == "pytest"
-    ):
-        yield node.lineno, node.col_offset, MSG
+    for decorator in node.decorator_list:
+        if (
+            isinstance(decorator, ast.Attribute)
+            and decorator.attr == "xfail"
+            and isinstance(decorator.value, ast.Name)
+            and decorator.value.id == "pytest"
+        ):
+            yield node.lineno, node.col_offset, MSG
 
 
 @register(ast.ImportFrom)

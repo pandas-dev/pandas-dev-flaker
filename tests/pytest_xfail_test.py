@@ -40,7 +40,7 @@ def test_noop(source):
         ),
         pytest.param(
             "import pytest\n" "@pytest.xfail\n" "def testme(): ...",
-            "2:1: PDF015 found pytest.xfail (use pytest.mark.xfail instead)",
+            "3:0: PDF015 found pytest.xfail (use pytest.mark.xfail instead)",
             id="pytest.xfail used",
         ),
     ),
