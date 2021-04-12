@@ -1,4 +1,5 @@
 import ast
+import sys
 from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data_tree import State, register
@@ -19,7 +20,10 @@ def visit_FunctionDef(
             and isinstance(decorator.value, ast.Name)
             and decorator.value.id == "pytest"
         ):
-            yield node.lineno, node.col_offset, MSG
+            if sys.version_info >= (3, 8):  # pragma: no cover (<py38)
+                yield node.lineno, node.col_offset, MSG
+            else:  # pragma: no cover (py38+)
+                yield node.lineno + 1, node.col_offset, MSG
 
 
 @register(ast.ImportFrom)
