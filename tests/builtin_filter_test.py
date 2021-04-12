@@ -34,8 +34,8 @@ def test_noop(source):
     "source, expected",
     (
         pytest.param(
-            "filter('str')",
-            "1:0: PDF004 builtin filter function used",
+            "lst = [1,2,3]\n" "filter(lambda x: x, lst)",
+            "2:0: PDF004 builtin filter function used",
             id="builtin filter",
         ),
     ),
