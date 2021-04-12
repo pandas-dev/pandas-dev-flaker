@@ -35,7 +35,7 @@ def test_noop(source):
     (
         pytest.param(
             "exec('str')",
-            "1:0: PDF021 builtin exec used",
+            "1:0: PDF006 builtin exec used",
             id="builtin exec",
         ),
     ),

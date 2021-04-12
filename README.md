@@ -38,7 +38,6 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | PDF018 | don't import from pandas.testing                                        |
 | PDF019 | found 'os.remove' (use 'tm.ensure_clean' instead)                       |
 | PDF020 | found 'np.bool' or 'np.object' (use 'np.bool_' or 'np.object_' instead) |
-| PDF021 | builtin exec used                                                       |
 
 ## contributing
 
