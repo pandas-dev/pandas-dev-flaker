@@ -21,15 +21,3 @@ def visit_ImportFrom(
         )
     ):
         yield node.lineno, node.col_offset, MSG
-
-
-@register(ast.Import)
-def visit_Import(
-    state: State,
-    node: ast.Import,
-    parent: ast.AST,
-) -> Iterator[Tuple[int, int, str]]:
-    if ["numpy", "random"] in [
-        name.name.split(".")[:2] for name in node.names
-    ]:
-        yield node.lineno, node.col_offset, MSG

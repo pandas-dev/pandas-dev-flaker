@@ -32,6 +32,10 @@ def results(s):
             "import numpy as np\nnp.random.randn(3)",
             id="pytest.xfail used",
         ),
+        pytest.param(
+            "import numpy.random",
+            id="pytest.xfail used",
+        ),
     ),
 )
 def test_noop(source):
@@ -42,14 +46,19 @@ def test_noop(source):
     "source, expected",
     (
         pytest.param(
-            "from numpy import random",
+            "from numpy.random.foo import bar",
             "1:0: PDF020 found import from numpy.random",
             id="os.remove call",
         ),
         pytest.param(
-            "import numpy.random",
+            "from numpy.random import foo",
             "1:0: PDF020 found import from numpy.random",
-            id="pytest.xfail used",
+            id="os.remove call",
+        ),
+        pytest.param(
+            "from numpy import random",
+            "1:0: PDF020 found import from numpy.random",
+            id="os.remove call",
         ),
     ),
 )
