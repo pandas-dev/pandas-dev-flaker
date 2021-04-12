@@ -18,7 +18,7 @@ def visit_ImportFrom(
 ) -> Iterator[Tuple[int, int, str]]:
     if node.module == "pandas._testing" or (
         node.module == "pandas"
-        and "_testing" in {name.name for name in node.names}
+        and check_for_wrong_alias(node.names, "_testing", "tm")
     ):
         yield node.lineno, node.col_offset, MSG
 

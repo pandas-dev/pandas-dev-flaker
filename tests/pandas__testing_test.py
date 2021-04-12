@@ -21,6 +21,10 @@ def results(s):
     "source",
     (
         pytest.param(
+            "from pandas import _testing as tm",
+            id="imported pandas._testing as tm",
+        ),
+        pytest.param(
             "import pandas._testing as tm",
             id="imported pandas._testing as tm",
         ),
@@ -40,7 +44,7 @@ def test_noop(source):
             id="import from _testing",
         ),
         pytest.param(
-            "from pandas import _testing as tm",
+            "from pandas import _testing",
             "1:0: PDF017 found import from 'pandas._testing' "
             "(use 'import pandas._testing as tm')",
             id="imported _testing from pandas",

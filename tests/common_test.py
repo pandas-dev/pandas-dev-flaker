@@ -21,7 +21,7 @@ def results(s):
     "source",
     (
         pytest.param(
-            "import pandas.core.common as comm",
+            "import pandas.core.common as com",
             id="non-builtin exec",
         ),
     ),
@@ -36,13 +36,13 @@ def test_noop(source):
         pytest.param(
             "import pandas.core.common",
             "1:0: PDF009 'common' imported from 'pandas.core' without "
-            "'comm' alias",
+            "'com' alias",
             id="builtin exec",
         ),
         pytest.param(
             "from pandas.core.common import foo",
             "1:0: PDF009 'common' imported from 'pandas.core' without "
-            "'comm' alias",
+            "'com' alias",
             id="builtin exec",
         ),
     ),
