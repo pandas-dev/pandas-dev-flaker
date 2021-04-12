@@ -22,19 +22,16 @@ def results(s):
     (
         pytest.param(
             "import foo\nfoo.random",
-            id="foo.random",
         ),
         pytest.param(
             "from foo import random",
-            id="foo.random",
         ),
         pytest.param(
             "import numpy as np\nnp.random.randn(3)",
-            id="pytest.xfail used",
+            id="access from np.random",
         ),
         pytest.param(
             "import numpy.random",
-            id="pytest.xfail used",
         ),
     ),
 )
@@ -47,18 +44,15 @@ def test_noop(source):
     (
         pytest.param(
             "from numpy.random.foo import bar",
-            "1:0: PDF020 found import from numpy.random",
-            id="os.remove call",
+            "1:0: PDF021 found import from numpy.random",
         ),
         pytest.param(
             "from numpy.random import foo",
-            "1:0: PDF020 found import from numpy.random",
-            id="os.remove call",
+            "1:0: PDF021 found import from numpy.random",
         ),
         pytest.param(
             "from numpy import random",
-            "1:0: PDF020 found import from numpy.random",
-            id="os.remove call",
+            "1:0: PDF021 found import from numpy.random",
         ),
     ),
 )
