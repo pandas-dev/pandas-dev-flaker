@@ -11,7 +11,6 @@ from typing import (
     Sequence,
     Set,
     Tuple,
-    TypeVar,
 )
 
 if TYPE_CHECKING:
@@ -27,18 +26,17 @@ class State(NamedTuple):
     in_annotation: bool = False
 
 
-TOKENS_T = TypeVar("TOKENS_T", bound=Sequence[tokenize.TokenInfo])
-TokensFunc = Callable[[TOKENS_T], Iterable[Tuple[int, int, str]]]
+TokensFunc = Callable[
+    [Sequence[tokenize.TokenInfo]],
+    Iterable[Tuple[int, int, str]],
+]
 
 
 FUNCS_TOKENS = []
 
 
-TokensCallbackMapping = List[TokensFunc[TOKENS_T]]
-
-
-def register() -> Callable[[TokensFunc[TOKENS_T]], TokensFunc[TOKENS_T]]:
-    def register_decorator(func: TokensFunc[TOKENS_T]) -> TokensFunc[TOKENS_T]:
+def register() -> Callable[[TokensFunc], TokensFunc]:
+    def register_decorator(func: TokensFunc) -> TokensFunc:
         FUNCS_TOKENS.append(func)
         return func
 
@@ -46,8 +44,8 @@ def register() -> Callable[[TokensFunc[TOKENS_T]], TokensFunc[TOKENS_T]]:
 
 
 def visit_tokens(
-    funcs: List[TokensFunc[TOKENS_T]],
-    tokens: TOKENS_T,
+    funcs: List[TokensFunc],
+    tokens: Sequence[tokenize.TokenInfo],
 ) -> Iterator[Tuple[int, int, str]]:
     "Step through tree, recording when nodes are in annotations."
     for token_func in funcs:

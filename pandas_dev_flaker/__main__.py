@@ -13,7 +13,7 @@ pkg_version: str = pkg_resources.get_distribution(pkg_name).version
 
 
 def run(
-    tree: ast.AST,
+    tree: ast.Module,
     file_tokens: Sequence[tokenize.TokenInfo],
 ) -> Iterator[Tuple[int, int, str, str]]:
     callbacks_tree = visit_tree(FUNCS_TREE, tree)
