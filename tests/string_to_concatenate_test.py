@@ -21,12 +21,8 @@ def results(s):
     "source",
     (
         pytest.param(
-            "foo = f'{3:2f}'",
-            id="!r in string",
-        ),
-        pytest.param(
-            "foo = '!r'",
-            id="!r in string",
+            "a = 'foo' + 'bar'",
+            id="non-builtin exec",
         ),
     ),
 )
@@ -38,10 +34,9 @@ def test_noop(source):
     "source, expected",
     (
         pytest.param(
-            "foo = f'{3!r}'",
-            "1:6: PDF014 Found '{foo!r}' formatted value "
-            "(instead, use 'repr(foo)')",
-            id="!r used as formatter",
+            "a = 'foo''bar'",
+            "1:4: PDF012 line split in two unnecessarily by 'black' formatter",
+            id="builtin exec",
         ),
     ),
 )
