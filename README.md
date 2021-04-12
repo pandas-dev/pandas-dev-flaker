@@ -61,5 +61,5 @@ Sample `.pre-commit-config.yaml`:
     rev: 3.9.0
     hooks:
     -   id: flake8
-        additional_dependencies: [pandas-dev-flaker==0.1.1]
+        additional_dependencies: [pandas-dev-flaker==0.1.2]
 ```
