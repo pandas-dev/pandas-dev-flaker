@@ -35,7 +35,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | PDF015 | from import from 'pandas.testing' (use 'import pandas._testing as tm')  |
 | PDF016 | found 'unittest.mock' (use 'pytest.monkeypatch' instead)                |
 | PDF017 | 'pd.api.types' used (import from 'pandas.api.types' instead)            |
-| PDF018 | 'common' imported from 'pandas.core' without 'comm' alias               |
+| PDF018 | 'common' imported from 'pandas.core' without 'com' alias                |
 | PDF019 | found both 'pd.foo' and 'foo' in the same file                          |
 | PDF020 | found private import across modules                                     |
 | PDF021 | found 'np.bool' or 'np.object' (use 'np.bool_' or 'np.object_' instead) |
