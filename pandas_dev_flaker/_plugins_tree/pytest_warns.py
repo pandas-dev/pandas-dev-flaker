@@ -9,16 +9,17 @@ MSG = (
 )
 
 
-@register(ast.Attribute)
-def visit_Attribute(
+@register(ast.Call)
+def visit_Call(
     state: State,
-    node: ast.Attribute,
+    node: ast.Call,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
     if (
-        node.attr == "warns"
-        and isinstance(node.value, ast.Name)
-        and node.value.id == "pytest"
+        isinstance(node.func, ast.Attribute)
+        and node.func.attr == "warns"
+        and isinstance(node.func.value, ast.Name)
+        and node.func.value.id == "pytest"
     ):
         yield node.lineno, node.col_offset, MSG
 
