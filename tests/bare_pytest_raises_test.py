@@ -21,13 +21,17 @@ def results(s):
     "source",
     (
         pytest.param(
+            "from foo import raises\n" "with foo.raises(ValueError): pass",
+            id="raises import not from pytest",
+        ),
+        pytest.param(
             "import foo\n" "with foo.raises(ValueError): pass",
-            id="non-builtin exec",
+            id="raises accessed not from pytest",
         ),
         pytest.param(
             "import pytest\n"
             "with pytest.raises(ValueError, match=None): pass",
-            id="non-builtin exec",
+            id="match=None",
         ),
     ),
 )
@@ -41,18 +45,18 @@ def test_noop(source):
         pytest.param(
             "from pytest import raises\n" "with raises(ValueError): pass",
             "2:5: PDF003 'pytest.raises' used without 'match='",
-            id="builtin exec",
+            id="from pytest import raises",
         ),
         pytest.param(
             "import pytest\n"
             "with pytest.raises(ValueError, bar='qux'): pass",
             "2:5: PDF003 'pytest.raises' used without 'match='",
-            id="builtin exec",
+            id="pytest.raises",
         ),
         pytest.param(
             "import pytest\n" "with pytest.raises(ValueError): pass",
             "2:5: PDF003 'pytest.raises' used without 'match='",
-            id="builtin exec",
+            id="pytest.raises",
         ),
     ),
 )
