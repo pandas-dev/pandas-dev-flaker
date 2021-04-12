@@ -22,5 +22,5 @@ def visit_Import(
     node: ast.Import,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
-    if "conftest" in {name.name for name in node.names}:
+    if "conftest" in {name.name.split(".")[-1] for name in node.names}:
         yield node.lineno, node.col_offset, MSG
