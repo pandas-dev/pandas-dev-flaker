@@ -20,7 +20,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 |--------|-------------------------------------------------------------------------|
 | PDF001 | found import from collections.abc (use 'from collections import abc')   |
 | PDF002 | 'pd.api.types' used (import from 'pandas.api.types' instead)            |
-| PDF003 | 'pytest.raises' used without 'match='                                     |
+| PDF003 | 'pytest.raises' used without 'match='                                   |
 | PDF004 | builtin filter function used                                            |
 | PDF005 | 'pytest.raises' used outside of context manager                         |
 | PDF006 | builtin exec used                                                       |

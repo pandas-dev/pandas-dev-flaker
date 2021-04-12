@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data_tree import State, register
 
-MSG = "PDF011 found both 'pd.foo' and 'foo' in the same file"
+MSG = "PDF011 found both 'pd.{attr}' and '{attr}' in the same file"
 
 
 @register(ast.Attribute)
@@ -17,4 +17,4 @@ def visit_Attribute(
         and isinstance(node.value, ast.Name)
         and node.value.id in {"pandas", "pd"}
     ):
-        yield node.lineno, node.col_offset, MSG
+        yield node.lineno, node.col_offset, MSG.format(attr=node.attr)
