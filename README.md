@@ -28,7 +28,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | PDF008 | found 'os.remove' (use 'tm.ensure_clean' instead)                       |
 | PDF009 | 'pytest.raises' used without 'match='                                   |
 | PDF010 | 'pytest.raises' used outside of context manager                         |
-| PDF011 | 'pytest.warns' used (use 'tm.assert_produces_warning' instead)          |
+| PDF011 | found pytest.warns (use pandas._testing.assert_produces_warning)        |
 | PDF012 | found pytest.xfail (use pytest.mark.xfail instead)                      |
 | PDF013 | import from 'conftest' found                                            |
 | PDF014 | found import from 'pandas._testing' (use 'import pandas._testing as tm')|

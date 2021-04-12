@@ -5,7 +5,7 @@ from pandas_dev_flaker._data_tree import State, register
 
 MSG = (
     "PDF011 found pytest.warns "
-    "(use pandas._testing.assert_produces_warning instead)"
+    "(use pandas._testing.assert_produces_warning)"
 )
 
 
