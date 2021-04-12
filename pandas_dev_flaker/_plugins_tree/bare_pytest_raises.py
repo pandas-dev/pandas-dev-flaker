@@ -4,7 +4,7 @@ from typing import Iterator, Tuple
 from pandas_dev_flaker._ast_helpers import is_name_attr
 from pandas_dev_flaker._data_tree import State, register
 
-MSG = "PDF003 pytest.raises used without 'match='"
+MSG = "PDF003 'pytest.raises' used without 'match='"
 
 
 @register(ast.Call)
@@ -16,12 +16,13 @@ def visit_Call(
     if (
         isinstance(node.func, ast.Attribute)
         and node.func.attr == "raises"
-        or is_name_attr(
-            node.func,
-            state.from_imports,
-            "pytest",
-            ("raises",),
-        )
+        and isinstance(node.func.value, ast.Name)
+        and node.func.value.id == "pytest"
+    ) or is_name_attr(
+        node.func,
+        state.from_imports,
+        "pytest",
+        ("raises",),
     ):
         if not node.keywords:
             yield node.lineno, node.col_offset, MSG
