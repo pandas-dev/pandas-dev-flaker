@@ -15,7 +15,10 @@ def visit_ImportFrom(
     node: ast.ImportFrom,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
-    if node.module == "collections.abc":
+    if node.module is not None and node.module.split(".")[:2] == [
+        "collections",
+        "abc",
+    ]:
         yield node.lineno, node.col_offset, MSG
 
 
@@ -25,5 +28,7 @@ def visit_Import(
     node: ast.Import,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
-    if "collections.abc" in {name.name for name in node.names}:
+    if ["collections", "abc"] in [
+        name.name.split(".")[:2] for name in node.names
+    ]:
         yield node.lineno, node.col_offset, MSG

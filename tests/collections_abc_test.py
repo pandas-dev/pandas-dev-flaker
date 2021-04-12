@@ -34,16 +34,28 @@ def test_noop(source):
     "source, expected",
     (
         pytest.param(
+            "from collections.abc.Generator import foo",
+            "1:0: PDF001 import from collections.abc "
+            "(use 'from collections import abc' instead)",
+            id="3rd level 'from' import",
+        ),
+        pytest.param(
             "from collections.abc import Generator",
             "1:0: PDF001 import from collections.abc "
             "(use 'from collections import abc' instead)",
-            id="Imported from collections.abc",
+            id="2nd level 'from' import",
+        ),
+        pytest.param(
+            "import collections.abc.Generator",
+            "1:0: PDF001 import from collections.abc "
+            "(use 'from collections import abc' instead)",
+            id="3rd level import",
         ),
         pytest.param(
             "import collections.abc",
             "1:0: PDF001 import from collections.abc "
             "(use 'from collections import abc' instead)",
-            id="Imported collections.abc",
+            id="2nd level import",
         ),
     ),
 )
