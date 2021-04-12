@@ -5,7 +5,7 @@ from pandas_dev_flaker._data_tree import State, register
 
 MSG = (
     "PDF001 found import from collections.abc "
-    "(use 'from collections import abc' instead)"
+    "(use 'from collections import abc')"
 )
 
 
