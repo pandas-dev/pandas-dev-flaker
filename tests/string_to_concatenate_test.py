@@ -21,8 +21,8 @@ def results(s):
     "source",
     (
         pytest.param(
-            "a = 'foo' + 'bar'",
-            id="non-builtin exec",
+            "a = (\n" "    'foo'\n" "    'bar'\n" ")",
+            id="separate lines",
         ),
     ),
 )
@@ -36,7 +36,7 @@ def test_noop(source):
         pytest.param(
             "a = 'foo''bar'",
             "1:4: PDF012 line split in two unnecessarily by 'black' formatter",
-            id="builtin exec",
+            id="consecutive strings",
         ),
     ),
 )
