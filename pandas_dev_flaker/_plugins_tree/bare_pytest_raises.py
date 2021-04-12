@@ -1,6 +1,7 @@
 import ast
 from typing import Iterator, Tuple
 
+from pandas_dev_flaker._ast_helpers import is_name_attr
 from pandas_dev_flaker._data_tree import State, register
 
 MSG = "PDF003 pytest.raises used without 'match='"
@@ -12,7 +13,16 @@ def visit_Call(
     node: ast.Call,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
-    if isinstance(node.func, ast.Attribute) and node.func.attr == "raises":
+    if (
+        isinstance(node.func, ast.Attribute)
+        and node.func.attr == "raises"
+        or is_name_attr(
+            node.func,
+            state.from_imports,
+            "pytest",
+            ("raises",),
+        )
+    ):
         if not node.keywords:
             yield node.lineno, node.col_offset, MSG
         elif "match" not in {keyword.arg for keyword in node.keywords}:
