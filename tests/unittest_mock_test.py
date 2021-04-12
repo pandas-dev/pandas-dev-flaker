@@ -35,20 +35,20 @@ def test_noop(source):
     (
         pytest.param(
             "mock = unittest.mock",
-            "1:7: PDF022 do not use unitest.mock "
-            "(use pytest's monkeypatch instead)",
+            "1:7: PDF022 found 'unittest.mock' "
+            "(use 'pytest.monkeypatch' instead)",
             id="unittest.mock",
         ),
         pytest.param(
             "from unittest.mock.foo import bar",
-            "1:0: PDF022 do not use unitest.mock "
-            "(use pytest's monkeypatch instead)",
+            "1:0: PDF022 found 'unittest.mock' "
+            "(use 'pytest.monkeypatch' instead)",
             id="import from unittest.mock",
         ),
         pytest.param(
             "from unittest import mock",
-            "1:0: PDF022 do not use unitest.mock "
-            "(use pytest's monkeypatch instead)",
+            "1:0: PDF022 found 'unittest.mock' "
+            "(use 'pytest.monkeypatch' instead)",
             id="mock imported from unittest",
         ),
     ),

@@ -39,7 +39,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | PDF019 | found 'os.remove' (use 'tm.ensure_clean' instead)                       |
 | PDF020 | found 'np.bool' or 'np.object' (use 'np.bool_' or 'np.object_' instead) |
 | PDF021 | found import from 'numpy.random'                                        |
-| PDF022 | do not use unitest.mock (use pytest's monkeypatch instead)             |
+| PDF022 | found 'unittest.mock' (use 'pytest.monkeypatch' instead)                |
 ## contributing
 
 See `contributing.md` for how to get started.

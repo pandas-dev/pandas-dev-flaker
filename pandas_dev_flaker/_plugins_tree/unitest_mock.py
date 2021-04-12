@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data_tree import State, register
 
-MSG = "PDF022 do not use unitest.mock (use pytest's monkeypatch instead)"
+MSG = "PDF022 found 'unittest.mock' (use 'pytest.monkeypatch' instead)"
 
 
 @register(ast.ImportFrom)
