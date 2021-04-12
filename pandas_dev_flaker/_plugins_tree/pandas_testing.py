@@ -3,7 +3,10 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data_tree import State, register
 
-MSG = "PDF018 don't import from pandas.testing"
+MSG = (
+    "PDF018 found import from 'pandas.testing' "
+    "(use 'import pandas._testing as tm')"
+)
 
 
 @register(ast.ImportFrom)

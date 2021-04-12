@@ -35,7 +35,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | PDF015 | found pytest.xfail (use pytest.mark.xfail instead)                      |
 | PDF016 | found private import across modules                                     |
 | PDF017 | found import from 'pandas._testing' (use 'import pandas._testing as tm')|
-| PDF018 | don't import from pandas.testing                                        |
+| PDF018 | found import from 'pandas.testing' (use 'import pandas._testing as tm')                                        |
 | PDF019 | found 'os.remove' (use 'tm.ensure_clean' instead)                       |
 | PDF020 | found 'np.bool' or 'np.object' (use 'np.bool_' or 'np.object_' instead) |
 
