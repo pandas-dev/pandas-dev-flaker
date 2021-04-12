@@ -23,21 +23,22 @@ def _is_private_import(module: str, attributes: Sequence[str]) -> bool:
     )
 
 
-@register(ast.Attribute)
-def visit_Attribute(
+@register(ast.Call)
+def visit_Call(
     state: State,
-    node: ast.Attribute,
+    node: ast.Call,
     parent: ast.AST,
 ) -> Iterator[Tuple[int, int, str]]:
     if (
-        isinstance(node.value, ast.Name)
+        isinstance(node.func, ast.Attribute)
+        and isinstance(node.func.value, ast.Name)
         and (
             any(
-                node.value.id in imports
+                node.func.value.id in imports
                 for imports in state.from_imports.values()
             )
-            or node.value.id in state.from_imports
+            or node.func.value.id in state.from_imports
         )
-        and _is_private_import(node.value.id, [node.attr])
+        and _is_private_import(node.func.value.id, [node.func.attr])
     ):
         yield node.lineno, node.col_offset, MSG

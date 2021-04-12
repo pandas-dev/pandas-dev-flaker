@@ -21,6 +21,10 @@ def results(s):
     "source",
     (
         pytest.param(
+            "from foo import bar\n" "bar._qux",
+            id="Class private attributes are allowed",
+        ),
+        pytest.param(
             "from foo import Bar\n" "Bar._qux",
             id="Class private attributes are allowed",
         ),
@@ -42,7 +46,7 @@ def test_noop(source):
     "source, expected",
     (
         pytest.param(
-            "from foo import bar\n" "bar._qux",
+            "from foo import bar\n" "bar._qux()",
             "2:0: PDF016 found private import across modules",
             id="warns used, imported from pytest",
         ),
