@@ -21,12 +21,16 @@ def results(s):
     "source",
     (
         pytest.param(
+            "import numpy as np\nnp.object_",
+            id="access from numpy as np",
+        ),
+        pytest.param(
             "import numpy\nnumpy.object_",
-            id="foo.random",
+            id="access from numpy",
         ),
         pytest.param(
             "from numpy import object_",
-            id="foo.random",
+            id="import from numpy",
         ),
     ),
 )
@@ -41,19 +45,19 @@ def test_noop(source):
             "import numpy\nnumpy.object",
             "2:0: PDF020 found 'np.bool' or 'np.object' "
             "(use 'np.bool_' or 'np.object_' instead)",
-            id="os.remove call",
+            id="access from numpy",
         ),
         pytest.param(
             "import numpy as np\nnp.object",
             "2:0: PDF020 found 'np.bool' or 'np.object' "
             "(use 'np.bool_' or 'np.object_' instead)",
-            id="os.remove call",
+            id="access from np",
         ),
         pytest.param(
             "from numpy import object",
             "1:0: PDF020 found 'np.bool' or 'np.object' "
             "(use 'np.bool_' or 'np.object_' instead)",
-            id="os.remove call",
+            id="import from numpy",
         ),
     ),
 )

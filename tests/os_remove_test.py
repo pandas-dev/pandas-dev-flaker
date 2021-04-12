@@ -21,7 +21,11 @@ def results(s):
     "source",
     (
         pytest.param(
-            "import foo\nfoo.remove",
+            "from foo import remove\nremove('bar')",
+            id="import remove from foo",
+        ),
+        pytest.param(
+            "import foo\nfoo.remove('foo')",
             id="foo.remove",
         ),
     ),
@@ -41,7 +45,7 @@ def test_noop(source):
         pytest.param(
             "from os import remove\nremove('foo')",
             "2:0: PDF019 found 'os.remove' (use 'tm.ensure_clean' instead)",
-            id="pytest.xfail used",
+            id="import remove from os",
         ),
     ),
 )
