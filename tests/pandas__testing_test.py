@@ -22,7 +22,7 @@ def results(s):
     (
         pytest.param(
             "from pandas import _testing as tm",
-            id="imported pandas._testing as tm",
+            id="imported _testing as tm",
         ),
         pytest.param(
             "import pandas._testing as tm",
