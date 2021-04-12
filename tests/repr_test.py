@@ -25,6 +25,10 @@ def results(s):
             id="!r in string",
         ),
         pytest.param(
+            "def bar():\n" "    foo = '!r'\n" "    global foo, foo",
+            id="!r in string",
+        ),
+        pytest.param(
             "foo = '!r'",
             id="!r in string",
         ),
