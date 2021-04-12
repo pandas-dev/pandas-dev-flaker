@@ -22,11 +22,11 @@ def results(s):
     (
         pytest.param(
             "foo = f'{3:2f}'",
-            id="!r in string",
+            id="different formatter",
         ),
         pytest.param(
             "def bar():\n" "    foo = '!r'\n" "    global foo, foo",
-            id="!r in string",
+            id="!r in string, in function",
         ),
         pytest.param(
             "foo = '!r'",
