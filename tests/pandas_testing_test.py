@@ -35,31 +35,31 @@ def test_noop(source):
     (
         pytest.param(
             "from pandas import testing",
-            "1:0: PDF018 found import from 'pandas.testing' "
+            "1:0: PDF015 found import from 'pandas.testing' "
             "(use 'import pandas._testing as tm')",
             id="straight import",
         ),
         pytest.param(
             "from pandas.testing import foo",
-            "1:0: PDF018 found import from 'pandas.testing' "
+            "1:0: PDF015 found import from 'pandas.testing' "
             "(use 'import pandas._testing as tm')",
             id="import from pandas.testing",
         ),
         pytest.param(
             "import pandas\n" "pandas.testing.foo",
-            "2:0: PDF018 found import from 'pandas.testing' "
+            "2:0: PDF015 found import from 'pandas.testing' "
             "(use 'import pandas._testing as tm')",
             id="access from pandas.testing",
         ),
         pytest.param(
             "import pandas as pd\n" "pd.testing.foo",
-            "2:0: PDF018 found import from 'pandas.testing' "
+            "2:0: PDF015 found import from 'pandas.testing' "
             "(use 'import pandas._testing as tm')",
             id="access from pd.testing",
         ),
         pytest.param(
             "import pandas.testing",
-            "1:0: PDF018 found import from 'pandas.testing' "
+            "1:0: PDF015 found import from 'pandas.testing' "
             "(use 'import pandas._testing as tm')",
             id="import pandas.testing",
         ),

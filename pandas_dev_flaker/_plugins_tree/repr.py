@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data_tree import State, register
 
-MSG = "PDF014 Found '{foo!r}' formatted value (instead, use 'repr(foo)')"
+MSG = "PDF006 Found '{foo!r}' formatted value (instead, use 'repr(foo)')"
 
 
 @register(ast.FormattedValue)

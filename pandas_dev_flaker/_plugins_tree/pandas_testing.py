@@ -4,7 +4,7 @@ from typing import Iterator, Tuple
 from pandas_dev_flaker._data_tree import State, register
 
 MSG = (
-    "PDF018 found import from 'pandas.testing' "
+    "PDF015 found import from 'pandas.testing' "
     "(use 'import pandas._testing as tm')"
 )
 

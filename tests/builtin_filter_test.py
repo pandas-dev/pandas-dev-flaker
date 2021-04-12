@@ -35,7 +35,7 @@ def test_noop(source):
     (
         pytest.param(
             "lst = [1,2,3]\n" "filter(lambda x: x, lst)",
-            "2:0: PDF004 builtin filter function used",
+            "2:0: PDF002 builtin filter function used",
             id="builtin filter",
         ),
     ),

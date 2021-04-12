@@ -19,27 +19,27 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | Code   | Description                                                             |
 |--------|-------------------------------------------------------------------------|
 | PDF001 | found import from collections.abc (use 'from collections import abc')   |
-| PDF002 | 'pd.api.types' used (import from 'pandas.api.types' instead)            |
-| PDF003 | 'pytest.raises' used without 'match='                                   |
-| PDF004 | builtin filter function used                                            |
-| PDF005 | 'pytest.raises' used outside of context manager                         |
-| PDF006 | builtin exec used                                                       |
-| PDF007 | 'pytest.warns' used (use 'tm.assert_produces_warning' instead)          |
-| PDF008 | 'foo.\_\_class\_\_' used, (use 'type(foo)' instead)                     |
-| PDF009 | 'common' imported from 'pandas.core' without 'comm' alias               |
-| PDF010 | import from 'conftest' found                                            |
-| PDF011 | found both 'pd.foo' and 'foo' in the same file                          |
-| PDF012 | line split in two unnecessarily by 'black' formatter                    |
-| PDF013 | leading space in concatenated strings                                   |
-| PDF014 | Found '{foo!r}' formatted value (instead, use 'repr(foo)')              |
-| PDF015 | found pytest.xfail (use pytest.mark.xfail instead)                      |
-| PDF016 | found private import across modules                                     |
-| PDF017 | found import from 'pandas._testing' (use 'import pandas._testing as tm')|
-| PDF018 | don't import from pandas.testing                                        |
-| PDF019 | found 'os.remove' (use 'tm.ensure_clean' instead)                       |
-| PDF020 | found 'np.bool' or 'np.object' (use 'np.bool_' or 'np.object_' instead) |
-| PDF021 | found import from 'numpy.random'                                        |
-| PDF022 | found 'unittest.mock' (use 'pytest.monkeypatch' instead)                |
+| PDF002 | builtin filter function used                                            |
+| PDF003 | builtin exec used                                                       |
+| PDF004 | 'foo.\_\_class\_\_' used, (use 'type(foo)' instead)                     |
+| PDF005 | leading space in concatenated strings                                   |
+| PDF006 | Found '{foo!r}' formatted value (instead, use 'repr(foo)')              |
+| PDF007 | line split in two unnecessarily by 'black' formatter                    |
+| PDF008 | found 'os.remove' (use 'tm.ensure_clean' instead)                       |
+| PDF009 | 'pytest.raises' used without 'match='                                   |
+| PDF010 | 'pytest.raises' used outside of context manager                         |
+| PDF011 | 'pytest.warns' used (use 'tm.assert_produces_warning' instead)          |
+| PDF012 | found pytest.xfail (use pytest.mark.xfail instead)                      |
+| PDF013 | import from 'conftest' found                                            |
+| PDF014 | found import from 'pandas._testing' (use 'import pandas._testing as tm')|
+| PDF015 | don't import from pandas.testing                                        |
+| PDF016 | found 'unittest.mock' (use 'pytest.monkeypatch' instead)                |
+| PDF017 | 'pd.api.types' used (import from 'pandas.api.types' instead)            |
+| PDF018 | 'common' imported from 'pandas.core' without 'comm' alias               |
+| PDF019 | found both 'pd.foo' and 'foo' in the same file                          |
+| PDF020 | found private import across modules                                     |
+| PDF021 | found 'np.bool' or 'np.object' (use 'np.bool_' or 'np.object_' instead) |
+| PDF022 | found import from 'numpy.random'                                        |
 ## contributing
 
 See `contributing.md` for how to get started.

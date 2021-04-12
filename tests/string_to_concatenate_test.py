@@ -35,7 +35,7 @@ def test_noop(source):
     (
         pytest.param(
             "a = 'foo''bar'",
-            "1:4: PDF012 line split in two unnecessarily by 'black' formatter",
+            "1:4: PDF007 line split in two unnecessarily by 'black' formatter",
             id="consecutive strings",
         ),
     ),

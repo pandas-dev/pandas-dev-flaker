@@ -35,12 +35,12 @@ def test_noop(source):
     (
         pytest.param(
             "import pytest\n" "pytest.raises(ValueError, match=None)",
-            "2:0: PDF005 'pytest.raises' used outside of context manager",
+            "2:0: PDF010 'pytest.raises' used outside of context manager",
             id="builtin exec",
         ),
         pytest.param(
             "from pytest import raises\n" "raises(ValueError, match=None)",
-            "2:0: PDF005 'pytest.raises' used outside of context manager",
+            "2:0: PDF010 'pytest.raises' used outside of context manager",
             id="builtin exec",
         ),
     ),

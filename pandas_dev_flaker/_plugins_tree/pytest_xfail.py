@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data_tree import State, register
 
-MSG = "PDF015 found pytest.xfail (use pytest.mark.xfail instead)"
+MSG = "PDF012 found pytest.xfail (use pytest.mark.xfail instead)"
 
 
 @register(ast.FunctionDef)

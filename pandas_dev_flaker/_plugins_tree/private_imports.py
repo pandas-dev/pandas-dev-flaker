@@ -5,7 +5,7 @@ from pandas_dev_flaker._data_tree import State, register
 
 PRIVATE_FUNCTIONS_ALLOWED = {"sys._getframe"}  # no known alternative
 
-MSG = "PDF016 found private import across modules"
+MSG = "PDF020 found private import across modules"
 
 
 def _is_private_import(module: str, attributes: Sequence[str]) -> bool:

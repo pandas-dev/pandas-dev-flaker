@@ -3,7 +3,7 @@ from typing import Iterator, Tuple
 
 from pandas_dev_flaker._data_tree import State, register
 
-MSG = "PDF002 'pd.api.types' used (import from 'pandas.api.types' instead)"
+MSG = "PDF017 'pd.api.types' used (import from 'pandas.api.types' instead)"
 
 
 @register(ast.Attribute)

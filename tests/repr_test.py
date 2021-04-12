@@ -43,7 +43,7 @@ def test_noop(source):
     (
         pytest.param(
             "foo = f'{3!r}'",
-            "1:6: PDF014 Found '{foo!r}' formatted value "
+            "1:6: PDF006 Found '{foo!r}' formatted value "
             "(instead, use 'repr(foo)')",
             id="!r used as formatter",
         ),

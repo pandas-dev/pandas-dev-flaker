@@ -35,13 +35,13 @@ def test_noop(source):
     (
         pytest.param(
             "from pytest import warns\n",
-            "1:0: PDF007 found pytest.warns "
+            "1:0: PDF011 found pytest.warns "
             "(use pandas._testing.assert_produces_warning instead)",
             id="warns used, imported from pytest",
         ),
         pytest.param(
             "import pytest\n" "with pytest.warns(): pass",
-            "2:5: PDF007 found pytest.warns "
+            "2:5: PDF011 found pytest.warns "
             "(use pandas._testing.assert_produces_warning instead)",
             id="pytest.warns used",
         ),

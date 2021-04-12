@@ -39,19 +39,19 @@ def test_noop(source):
     (
         pytest.param(
             "from pandas._testing import foo",
-            "1:0: PDF017 found import from 'pandas._testing' "
+            "1:0: PDF014 found import from 'pandas._testing' "
             "(use 'import pandas._testing as tm')",
             id="import from _testing",
         ),
         pytest.param(
             "from pandas import _testing",
-            "1:0: PDF017 found import from 'pandas._testing' "
+            "1:0: PDF014 found import from 'pandas._testing' "
             "(use 'import pandas._testing as tm')",
             id="imported _testing from pandas",
         ),
         pytest.param(
             "import pandas._testing",
-            "1:0: PDF017 found import from 'pandas._testing' "
+            "1:0: PDF014 found import from 'pandas._testing' "
             "(use 'import pandas._testing as tm')",
             id="imported pandas._testing",
         ),

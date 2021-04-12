@@ -10,7 +10,7 @@ from typing import Iterator, Sequence, Tuple
 
 from pandas_dev_flaker._data_tokens import register
 
-MSG = "PDF012 line split in two unnecessarily by 'black' formatter"
+MSG = "PDF007 line split in two unnecessarily by 'black' formatter"
 
 
 @register()

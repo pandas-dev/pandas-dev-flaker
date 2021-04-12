@@ -9,7 +9,7 @@ from typing import Iterator, Sequence, Tuple
 
 from pandas_dev_flaker._data_tokens import register
 
-MSG = "PDF013 leading space in concatenated strings"
+MSG = "PDF005 leading space in concatenated strings"
 
 
 def _get_literal_string_prefix_len(token_string: str) -> int:

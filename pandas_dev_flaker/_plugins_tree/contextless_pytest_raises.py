@@ -4,7 +4,7 @@ from typing import Iterator, Tuple
 from pandas_dev_flaker._ast_helpers import is_name_attr
 from pandas_dev_flaker._data_tree import State, register
 
-MSG = "PDF005 'pytest.raises' used outside of context manager"
+MSG = "PDF010 'pytest.raises' used outside of context manager"
 
 
 @register(ast.Call)

@@ -43,19 +43,19 @@ def test_noop(source):
     (
         pytest.param(
             "import numpy\nnumpy.object",
-            "2:0: PDF020 found 'np.bool' or 'np.object' "
+            "2:0: PDF021 found 'np.bool' or 'np.object' "
             "(use 'np.bool_' or 'np.object_' instead)",
             id="access from numpy",
         ),
         pytest.param(
             "import numpy as np\nnp.object",
-            "2:0: PDF020 found 'np.bool' or 'np.object' "
+            "2:0: PDF021 found 'np.bool' or 'np.object' "
             "(use 'np.bool_' or 'np.object_' instead)",
             id="access from np",
         ),
         pytest.param(
             "from numpy import object",
-            "1:0: PDF020 found 'np.bool' or 'np.object' "
+            "1:0: PDF021 found 'np.bool' or 'np.object' "
             "(use 'np.bool_' or 'np.object_' instead)",
             id="import from numpy",
         ),

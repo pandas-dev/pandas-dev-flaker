@@ -47,12 +47,12 @@ def test_noop(source):
     (
         pytest.param(
             "import bar\n" "bar._qux()",
-            "2:0: PDF016 found private import across modules",
+            "2:0: PDF020 found private import across modules",
             id="private attribute, import",
         ),
         pytest.param(
             "from foo import bar\n" "bar._qux()",
-            "2:0: PDF016 found private import across modules",
+            "2:0: PDF020 found private import across modules",
             id="private attribute, from import",
         ),
     ),

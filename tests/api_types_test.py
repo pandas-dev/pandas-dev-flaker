@@ -35,19 +35,19 @@ def test_noop(source):
     (
         pytest.param(
             "import pandas as pd\n" "pd.api.types.pandas_dtype",
-            "2:0: PDF002 'pd.api.types' used "
+            "2:0: PDF017 'pd.api.types' used "
             "(import from 'pandas.api.types' instead)",
             id="pd namespace",
         ),
         pytest.param(
             "import pandas\n" "pandas.api.types.pandas_dtype.foo",
-            "2:0: PDF002 'pd.api.types' used "
+            "2:0: PDF017 'pd.api.types' used "
             "(import from 'pandas.api.types' instead)",
             id="pandas namespace, 2nd level attribute",
         ),
         pytest.param(
             "import pandas\n" "pandas.api.types.pandas_dtype",
-            "2:0: PDF002 'pd.api.types' used "
+            "2:0: PDF017 'pd.api.types' used "
             "(import from 'pandas.api.types' instead)",
             id="pandas namespace",
         ),

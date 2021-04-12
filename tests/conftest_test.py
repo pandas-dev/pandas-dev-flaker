@@ -35,22 +35,22 @@ def test_noop(source):
     (
         pytest.param(
             "import pandas.conftest",
-            "1:0: PDF010 import from 'conftest' found",
+            "1:0: PDF013 import from 'conftest' found",
             id="import pandas.conftest",
         ),
         pytest.param(
             "import conftest",
-            "1:0: PDF010 import from 'conftest' found",
+            "1:0: PDF013 import from 'conftest' found",
             id="import conftest",
         ),
         pytest.param(
             "from conftest import foo",
-            "1:0: PDF010 import from 'conftest' found",
+            "1:0: PDF013 import from 'conftest' found",
             id="import from conftest",
         ),
         pytest.param(
             "from pandas.conftest import foo",
-            "1:0: PDF010 import from 'conftest' found",
+            "1:0: PDF013 import from 'conftest' found",
             id="import from pandas.conftest",
         ),
     ),

@@ -39,12 +39,12 @@ def test_noop(source):
     (
         pytest.param(
             "import os\nos.remove('foo')",
-            "2:0: PDF019 found 'os.remove' (use 'tm.ensure_clean' instead)",
+            "2:0: PDF008 found 'os.remove' (use 'tm.ensure_clean' instead)",
             id="os.remove call",
         ),
         pytest.param(
             "from os import remove\nremove('foo')",
-            "2:0: PDF019 found 'os.remove' (use 'tm.ensure_clean' instead)",
+            "2:0: PDF008 found 'os.remove' (use 'tm.ensure_clean' instead)",
             id="import remove from os",
         ),
     ),

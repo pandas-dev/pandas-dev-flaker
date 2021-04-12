@@ -4,7 +4,7 @@ from typing import Iterator, Tuple
 from pandas_dev_flaker._data_tree import State, register
 
 MSG = (
-    "PDF020 found 'np.bool' or 'np.object' "
+    "PDF021 found 'np.bool' or 'np.object' "
     "(use 'np.bool_' or 'np.object_' instead)"
 )
 

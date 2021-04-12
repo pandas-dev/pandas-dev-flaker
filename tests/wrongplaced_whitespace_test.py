@@ -39,7 +39,7 @@ def test_noop(source):
     (
         pytest.param(
             "foo = (\n    'bar'\n    ' qux'\n    )\n",
-            "3:4: PDF013 leading space in concatenated strings",
+            "3:4: PDF005 leading space in concatenated strings",
             id="Whitespace at start",
         ),
     ),

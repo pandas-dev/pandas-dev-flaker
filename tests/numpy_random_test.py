@@ -44,15 +44,15 @@ def test_noop(source):
     (
         pytest.param(
             "from numpy.random.foo import bar",
-            "1:0: PDF021 found import from 'numpy.random'",
+            "1:0: PDF022 found import from 'numpy.random'",
         ),
         pytest.param(
             "from numpy.random import foo",
-            "1:0: PDF021 found import from 'numpy.random'",
+            "1:0: PDF022 found import from 'numpy.random'",
         ),
         pytest.param(
             "from numpy import random",
-            "1:0: PDF021 found import from 'numpy.random'",
+            "1:0: PDF022 found import from 'numpy.random'",
         ),
     ),
 )

@@ -50,23 +50,23 @@ def test_noop(source):
         pytest.param(
             "from pytest import raises\n"
             "with raises(ValueError, qux=None): pass",
-            "2:5: PDF003 'pytest.raises' used without 'match='",
+            "2:5: PDF009 'pytest.raises' used without 'match='",
             id="from pytest import raises, differenet kwarg",
         ),
         pytest.param(
             "from pytest import raises\n" "with raises(ValueError): pass",
-            "2:5: PDF003 'pytest.raises' used without 'match='",
+            "2:5: PDF009 'pytest.raises' used without 'match='",
             id="from pytest import raises, no match",
         ),
         pytest.param(
             "import pytest\n"
             "with pytest.raises(ValueError, bar='qux'): pass",
-            "2:5: PDF003 'pytest.raises' used without 'match='",
+            "2:5: PDF009 'pytest.raises' used without 'match='",
             id="pytest.raises, different keyword argument passed",
         ),
         pytest.param(
             "import pytest\n" "with pytest.raises(ValueError): pass",
-            "2:5: PDF003 'pytest.raises' used without 'match='",
+            "2:5: PDF009 'pytest.raises' used without 'match='",
             id="pytest.raises, not match",
         ),
     ),

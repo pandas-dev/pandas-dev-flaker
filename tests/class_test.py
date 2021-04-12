@@ -35,7 +35,7 @@ def test_noop(source):
     (
         pytest.param(
             "foo.__class__()",
-            "1:0: PDF008 'foo.__class__' used, (use 'type(foo)' instead)",
+            "1:0: PDF004 'foo.__class__' used, (use 'type(foo)' instead)",
             id="__class__",
         ),
     ),
