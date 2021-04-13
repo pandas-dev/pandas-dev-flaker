@@ -12,7 +12,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/MarcoGorelli/pandas-dev-flaker/issues.
+Report bugs at https://github.com/pandas-dev/pandas-dev-flaker/issues.
 
 If you are reporting a bug, please include:
 
@@ -42,7 +42,7 @@ articles, and such.
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/MarcoGorelli/pandas-dev-flaker/issues.
+The best way to send feedback is to file an issue at https://github.com/pandas-dev/pandas-dev-flaker/issues.
 
 If you are proposing a feature:
 
@@ -56,7 +56,7 @@ Get Started!
 
 Ready to contribute? Here's how to set up ```` for local development.
 
-1. Fork the ``pandas-dev-flaker`` repo on GitHub at https://github.com/MarcoGorelli/pandas-dev-flaker.
+1. Fork the ``pandas-dev-flaker`` repo on GitHub at https://github.com/pandas-dev/pandas-dev-flaker.
 2. Clone your fork locally::
 
     $ git clone git@github.com:your_name_here/pandas-dev-flaker.git pandas-dev-flaker-dev
@@ -64,7 +64,7 @@ Ready to contribute? Here's how to set up ```` for local development.
 
 3. Set the original repository as upstream::
 
-    $ git remote add upstream git@github.com:MarcoGorelli/pandas-dev-flaker.git
+    $ git remote add upstream git@github.com:pandas-dev/pandas-dev-flaker.git
 
 4. Create a Python [virtual environment](https://realpython.com/python-virtual-environments-a-primer/),
    and inside it, run:
