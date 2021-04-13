@@ -1,6 +1,6 @@
 [![Build Status](https://github.com/pandas-dev/pandas-dev-flaker/workflows/tox/badge.svg)](https://github.com/pandas-dev/pandas-dev-flaker/actions?workflow=tox)
 [![Coverage](https://codecov.io/gh/pandas-dev/pandas-dev-flaker/branch/main/graph/badge.svg)](https://codecov.io/gh/pandas-dev/pandas-dev-flaker)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/pandas-dev/pandas-dev-flaker/main.svg)](https://results.pre-commit.ci/latest/github/pandas-dev/pandas-dev-flaker/main)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/pandas-dev/MarcoGorelli/main.svg)](https://results.pre-commit.ci/latest/github/MarcoGorelli/pandas-dev-flaker/main)
 
 pandas-dev-flaker
 =================
