@@ -39,6 +39,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | PDF020 | found private import across modules                                     |
 | PDF021 | found 'np.bool' or 'np.object' (use 'np.bool_' or 'np.object_' instead) |
 | PDF022 | found import from 'numpy.random'                                        |
+| PDF023 | found assignment to single-letter variable                              |
 ## contributing
 
 See `contributing.md` for how to get started.

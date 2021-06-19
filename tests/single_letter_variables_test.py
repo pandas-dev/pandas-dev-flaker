@@ -24,6 +24,14 @@ def results(s):
             "ab = 3",
             id="Multi-letter assignment",
         ),
+        pytest.param(
+            "_ = 3",
+            id="Underscore assignment",
+        ),
+        pytest.param(
+            "ab, cd, _ = (1, 2, 3)",
+            id="Unpacking including an underscore",
+        ),
     ),
 )
 def test_noop(source):
@@ -35,8 +43,18 @@ def test_noop(source):
     (
         pytest.param(
             "a = 3",
-            "1:0: PDF023 don't assign to single-letter variables",
+            "1:0: PDF023 found assignment to single-letter variable",
             id="Single letter variable",
+        ),
+        pytest.param(
+            "bar = a = 1",
+            "1:6: PDF023 found assignment to single-letter variable",
+            id="Multiple assignment",
+        ),
+        pytest.param(
+            "a, bar = (3, 5)",
+            "1:0: PDF023 found assignment to single-letter variable",
+            id="Unpacking",
         ),
     ),
 )
