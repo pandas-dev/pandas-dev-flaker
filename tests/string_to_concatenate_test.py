@@ -21,7 +21,7 @@ def results(s):
     "source",
     (
         pytest.param(
-            "a = (\n" "    'foo'\n" "    'bar'\n" ")",
+            "var = (\n" "    'foo'\n" "    'bar'\n" ")",
             id="separate lines",
         ),
     ),
@@ -34,8 +34,8 @@ def test_noop(source):
     "source, expected",
     (
         pytest.param(
-            "a = 'foo''bar'",
-            "1:4: PDF007 line split in two unnecessarily by 'black' formatter",
+            "var = 'foo''bar'",
+            "1:6: PDF007 line split in two unnecessarily by 'black' formatter",
             id="consecutive strings",
         ),
     ),
