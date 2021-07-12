@@ -42,7 +42,7 @@ def is_str_constant(
             and isinstance(node.func.value, ast.Str)
         )
         or (
-            sys.version_info[0:2] >= (3, 8)
+            sys.version_info >= (3, 8)
             and isinstance(node.func.value, ast.Constant)
             and isinstance(node.func.value.value, str)
         )
