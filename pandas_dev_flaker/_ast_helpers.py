@@ -38,7 +38,7 @@ def is_str_constant(
 ) -> bool:
     return isinstance(node.func, ast.Attribute) and (
         (
-            sys.version_info[0:2] < (3, 8)
+            sys.version_info < (3, 8)
             and isinstance(node.func.value, ast.Str)
         )
         or (
