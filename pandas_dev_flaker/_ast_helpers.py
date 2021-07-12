@@ -36,13 +36,13 @@ def check_for_wrong_alias(
 def is_str_constant(
     node: ast.Call,
 ) -> bool:
-    python_version = float(sys.version_info.major) + 0.1 * float(
-        sys.version_info.minor,
-    )
     return isinstance(node.func, ast.Attribute) and (
-        (python_version < 3.8 and isinstance(node.func.value, ast.Str))
+        (
+            sys.version_info[0:2] < (3, 8)
+            and isinstance(node.func.value, ast.Str)
+        )
         or (
-            python_version >= 3.8
+            sys.version_info[0:2] >= (3, 8)
             and isinstance(node.func.value, ast.Constant)
             and isinstance(node.func.value.value, str)
         )
