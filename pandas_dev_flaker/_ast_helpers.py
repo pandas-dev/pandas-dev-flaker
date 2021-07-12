@@ -1,4 +1,5 @@
 import ast
+import sys
 from typing import Container, Dict, Sequence, Set
 
 
@@ -30,3 +31,19 @@ def check_for_wrong_alias(
             return name_.asname != alias
     else:
         return False
+
+
+def is_str_constant(
+    node: ast.Call,
+) -> bool:
+    return isinstance(node.func, ast.Attribute) and (
+        (
+            sys.version_info < (3, 8)
+            and isinstance(node.func.value, ast.Str)
+        )
+        or (
+            sys.version_info >= (3, 8)
+            and isinstance(node.func.value, ast.Constant)
+            and isinstance(node.func.value.value, str)
+        )
+    )
