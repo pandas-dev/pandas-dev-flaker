@@ -37,10 +37,7 @@ def is_str_constant(
     node: ast.Call,
 ) -> bool:
     return isinstance(node.func, ast.Attribute) and (
-        (
-            sys.version_info < (3, 8)
-            and isinstance(node.func.value, ast.Str)
-        )
+        (sys.version_info < (3, 8) and isinstance(node.func.value, ast.Str))
         or (
             sys.version_info >= (3, 8)
             and isinstance(node.func.value, ast.Constant)

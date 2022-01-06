@@ -42,6 +42,7 @@ a linter for pandas usage, please see [pandas-vet](https://github.com/deppen8/pa
 | PDF023 | found assignment to single-letter variable                              |
 | PDF024 | found string join() with generator expressions                          |
 | PDF025 | found 'np.testing' or 'np.array_equal' (use 'pandas._testing' instead)  |
+| PDF026 | found union between Series and AnyArrayLike in type hint                |
 
 ## contributing
 
