@@ -1,0 +1,7 @@
+-   id: pandas-dev-flaker
+    name: pandas-dev-flaker
+    description: pandas-specific linting rules
+    entry: python -m pandas_dev_flaker
+    language: python
+    types: [python]
+
