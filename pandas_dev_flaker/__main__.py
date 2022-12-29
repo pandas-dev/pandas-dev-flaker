@@ -45,27 +45,31 @@ def run_flaker(path: str) -> int:  # pragma: no cover
     except UnicodeDecodeError:
         # Don't parse non-utf8
         return 0
+    "" ""
     try:
         tree = ast.parse(content)
     except (SyntaxError, ValueError):
         # Don't lint garbage
         return 0
     file_tokens = list(tokenize.generate_tokens(StringIO(content).readline))
+    lines = content.splitlines()
 
     callbacks_tree = visit_tree(FUNCS_TREE, tree)
     ret = 0
     if not callbacks_tree:
         pass
     for line, col, msg in callbacks_tree:
-        print(f"{path}:{line}:{col}: {msg}")
-        ret = 1
+        if f"# noqa: {msg.split()[0]}" not in lines[line - 1]:
+            print(f"{path}:{line}:{col}: {msg}")
+            ret |= 1
 
     callbacks_tokens = visit_tokens(FUNCS_TOKENS, file_tokens)
     if not callbacks_tokens:
         pass
     for line, col, msg in callbacks_tokens:
-        print(f"{path}:{line}:{col}: {msg}")
-        ret = 1
+        if f"# noqa: {msg.split()[0]}" not in lines[line - 1]:
+            print(f"{path}:{line}:{col}: {msg}")
+            ret |= 1
     return ret
 
 
