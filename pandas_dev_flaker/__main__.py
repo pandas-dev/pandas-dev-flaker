@@ -38,11 +38,15 @@ run.version = pkg_version  # type: ignore
 
 
 def run_flaker(path: str) -> int:  # pragma: no cover
-    with open(path, encoding="utf-8") as fd:
-        content = fd.read()
+    try:
+        with open(path, encoding="utf-8") as fd:
+            content = fd.read()
+    except UnicodeDecodeError:
+        # Don't parse non-utf8
+        return 0
     try:
         tree = ast.parse(content)
-    except SyntaxError:
+    except (SyntaxError, ValueError):
         # Don't lint garbage
         return 0
     file_tokens = list(tokenize.generate_tokens(StringIO(content).readline))
