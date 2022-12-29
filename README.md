@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/pandas-dev/pandas-dev-flaker/workflows/tox/badge.svg)](https://github.com/pandas-dev/pandas-dev-flaker/actions?workflow=tox)
+![Build Status](https://github.com/pandas-dev/pandas-dev-flaker/workflows/tox/badge.svg)](https://github.com/pandas-dev/pandas-dev-flaker/actions?workflow=tox)
 [![Coverage](https://codecov.io/gh/pandas-dev/pandas-dev-flaker/branch/main/graph/badge.svg)](https://codecov.io/gh/pandas-dev/pandas-dev-flaker)
 
 pandas-dev-flaker
