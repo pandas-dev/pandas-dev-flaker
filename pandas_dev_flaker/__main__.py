@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import ast
+import sys
 import tokenize
 from io import StringIO
 from typing import Iterator, Sequence
@@ -79,4 +80,4 @@ def main(argv: Sequence[str] | None = None) -> int:  # pragma: no cover
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
