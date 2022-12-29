@@ -1,8 +1,10 @@
-import ast
-from io import StringIO
+from __future__ import annotations
+
 import argparse
+import ast
 import tokenize
-from typing import Iterator, Sequence, Tuple
+from io import StringIO
+from typing import Iterator, Sequence
 
 import pkg_resources
 
@@ -17,7 +19,7 @@ pkg_version: str = pkg_resources.get_distribution(pkg_name).version
 def run(
     tree: ast.Module,
     file_tokens: Sequence[tokenize.TokenInfo],
-) -> Iterator[Tuple[int, int, str, str]]:
+) -> Iterator[tuple[int, int, str, str]]:
     callbacks_tree = visit_tree(FUNCS_TREE, tree)
     if not callbacks_tree:
         return
@@ -34,8 +36,9 @@ def run(
 run.name = pkg_name  # type: ignore
 run.version = pkg_version  # type: ignore
 
-def run_flaker(path):
-    with open(path, encoding='utf-8') as fd:
+
+def run_flaker(path: str) -> int:  # pragma: no cover
+    with open(path, encoding="utf-8") as fd:
         content = fd.read()
     try:
         tree = ast.parse(content)
@@ -49,26 +52,27 @@ def run_flaker(path):
     if not callbacks_tree:
         pass
     for line, col, msg in callbacks_tree:
-        print(f'{path}:{line}:{col}: {msg}')
+        print(f"{path}:{line}:{col}: {msg}")
         ret = 1
 
     callbacks_tokens = visit_tokens(FUNCS_TOKENS, file_tokens)
     if not callbacks_tokens:
         pass
     for line, col, msg in callbacks_tokens:
-        print(f'{path}:{line}:{col}: {msg}')
+        print(f"{path}:{line}:{col}: {msg}")
         ret = 1
     return ret
 
 
-def main(argv = None):
+def main(argv: Sequence[str] | None = None) -> int:  # pragma: no cover
     parser = argparse.ArgumentParser()
-    parser.add_argument('paths', nargs='*')
+    parser.add_argument("paths", nargs="*")
     args = parser.parse_args(argv)
     ret = 0
     for path in args.paths:
         ret |= run_flaker(path)
     return ret
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
