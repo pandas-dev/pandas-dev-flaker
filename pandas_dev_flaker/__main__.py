@@ -1,4 +1,6 @@
 import ast
+from io import StringIO
+import argparse
 import tokenize
 from typing import Iterator, Sequence, Tuple
 
@@ -31,3 +33,42 @@ def run(
 
 run.name = pkg_name  # type: ignore
 run.version = pkg_version  # type: ignore
+
+def run_flaker(path):
+    with open(path, encoding='utf-8') as fd:
+        content = fd.read()
+    try:
+        tree = ast.parse(content)
+    except SyntaxError:
+        # Don't lint garbage
+        return 0
+    file_tokens = list(tokenize.generate_tokens(StringIO(content).readline))
+
+    callbacks_tree = visit_tree(FUNCS_TREE, tree)
+    ret = 0
+    if not callbacks_tree:
+        pass
+    for line, col, msg in callbacks_tree:
+        print(f'{path}:{line}:{col}: {msg}')
+        ret = 1
+
+    callbacks_tokens = visit_tokens(FUNCS_TOKENS, file_tokens)
+    if not callbacks_tokens:
+        pass
+    for line, col, msg in callbacks_tokens:
+        print(f'{path}:{line}:{col}: {msg}')
+        ret = 1
+    return ret
+
+
+def main(argv = None):
+    parser = argparse.ArgumentParser()
+    parser.add_argument('paths', nargs='*')
+    args = parser.parse_args(argv)
+    ret = 0
+    for path in args.paths:
+        ret |= run_flaker(path)
+    return ret
+
+if __name__ == '__main__':
+    main()
